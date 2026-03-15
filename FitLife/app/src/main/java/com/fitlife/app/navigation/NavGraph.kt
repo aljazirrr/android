@@ -50,9 +50,15 @@ sealed class Screen(val route: String) {
 @Composable
 fun FitLifeNavGraph(
     navController: NavHostController,
-    isAuthenticated: Boolean,
-    startDestination: String = if (isAuthenticated) Screen.Dashboard.route else Screen.Login.route
+    isAuthenticated: Boolean
 ) {
+    // remember ensures startDestination is computed ONCE — prevents NavHost from
+    // recreating the entire graph when isAuthenticated changes (which would cause
+    // "destination not found" crashes on in-flight navigations).
+    val startDestination = remember {
+        if (isAuthenticated) Screen.Dashboard.route else Screen.Login.route
+    }
+
     NavHost(
         navController = navController,
         startDestination = startDestination,
