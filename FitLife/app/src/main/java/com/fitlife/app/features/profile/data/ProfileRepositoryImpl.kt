@@ -14,6 +14,8 @@ import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
+
+
 class ProfileRepositoryImpl @Inject constructor(
     private val userDao: UserDao,
     private val firestore: FirebaseFirestore,
@@ -21,10 +23,41 @@ class ProfileRepositoryImpl @Inject constructor(
     private val auth: FirebaseAuth
 ) : ProfileRepository {
 
-    override fun getUser(userId: String): Flow<User?> =
-        userDao.getUserById(userId).map { entity ->
-            entity?.toDomain()
+    override fun getUser(userId: String): Flow<User?> = flow {
+        // Emit from Room first
+        val cached = userDao.getUserByIdOnce(userId)
+        if (cached != null) {
+            emit(cached.toDomain())
+        } else {
+            // Fetch from Firestore
+            val user = try {
+                val snapshot = firestore.collection(FirestoreCollections.USERS)
+                    .document(userId).get().await()
+                snapshot.toObject(User::class.java)
+            } catch (e: Exception) {
+                null
+            }
+            if (user != null) {
+                userDao.insertUser(user.toEntity())
+                emit(user)
+            } else {
+                // Final fallback: Firebase Auth data
+                val firebaseUser = auth.currentUser
+                val fallback = if (firebaseUser != null) {
+                    User(
+                        uid = firebaseUser.uid,
+                        email = firebaseUser.email ?: "",
+                        displayName = firebaseUser.displayName
+                            ?: firebaseUser.email?.substringBefore("@") ?: "User"
+                    )
+                } else null
+                if (fallback != null) userDao.insertUser(fallback.toEntity())
+                emit(fallback)
+            }
         }
+        // Continue observing Room for updates
+        emitAll(userDao.getUserById(userId).map { it?.toDomain() })
+    }
 
     override suspend fun updateProfile(user: User): Resource<Unit> = try {
         userDao.updateUser(user.toEntity())

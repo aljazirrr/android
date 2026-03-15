@@ -115,7 +115,7 @@ fun ProfileScreen(
             text = { Text("Ești sigur că vrei să te deconectezi?") },
             confirmButton = {
                 Button(
-                    onClick = { showSignOutDialog = false; onSignOut() },
+                    onClick = { showSignOutDialog = false; viewModel.signOut(); onSignOut() },
                     colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.error)
                 ) { Text("Deconectare") }
             },
@@ -140,12 +140,8 @@ private fun ProfileHeader(user: User, onEditProfile: () -> Unit) {
                 ),
                 contentAlignment = Alignment.Center
             ) {
-                if (user.photoUrl != null) {
-                    // Coil image would go here
-                    Text(user.displayName.first().uppercaseChar().toString(), fontSize = 40.sp, color = Color.White, fontWeight = FontWeight.ExtraBold)
-                } else {
-                    Text(user.displayName.first().uppercaseChar().toString(), fontSize = 40.sp, color = Color.White, fontWeight = FontWeight.ExtraBold)
-                }
+                val initial = user.displayName.firstOrNull()?.uppercaseChar()?.toString() ?: "U"
+                Text(initial, fontSize = 40.sp, color = Color.White, fontWeight = FontWeight.ExtraBold)
             }
 
             Spacer(Modifier.height(12.dp))

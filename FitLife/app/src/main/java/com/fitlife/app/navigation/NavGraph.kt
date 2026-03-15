@@ -16,6 +16,7 @@ import com.fitlife.app.core.utils.MealType
 import com.fitlife.app.features.profile.presentation.ProfileScreen
 import com.fitlife.app.features.progress.presentation.ProgressScreen
 import com.fitlife.app.features.workout.presentation.active.ActiveWorkoutScreen
+import com.fitlife.app.features.workout.presentation.list.WorkoutListScreen
 
 sealed class Screen(val route: String) {
     // Auth
@@ -90,6 +91,13 @@ fun FitLifeNavGraph(
                 onNavigateToProgress = { navController.navigate(Screen.Progress.route) },
                 onNavigateToExercises = { navController.navigate(Screen.Exercises.route) },
                 onStartWorkout = { navController.navigate(Screen.ActiveWorkout.route) }
+            )
+        }
+
+        composable(Screen.Workout.route) {
+            WorkoutListScreen(
+                onStartWorkout = { navController.navigate(Screen.ActiveWorkout.route) },
+                onViewSession = { /* detail screen not yet implemented */ }
             )
         }
 
