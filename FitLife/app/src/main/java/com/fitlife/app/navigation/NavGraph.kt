@@ -10,6 +10,7 @@ import com.fitlife.app.features.auth.presentation.login.LoginScreen
 import com.fitlife.app.features.auth.presentation.register.RegisterScreen
 import com.fitlife.app.features.dashboard.presentation.DashboardScreen
 import com.fitlife.app.features.exercises.presentation.ExerciseListScreen
+import com.fitlife.app.features.exercises.presentation.ExerciseDetailScreen
 import com.fitlife.app.features.nutrition.presentation.AddFoodScreen
 import com.fitlife.app.features.nutrition.presentation.NutritionScreen
 import com.fitlife.app.core.utils.MealType
@@ -129,6 +130,15 @@ fun FitLifeNavGraph(
             AddFoodScreen(
                 mealType = mealType,
                 onNavigateBack = { navController.popBackStack() }
+            )
+        }
+
+        composable(Screen.ExerciseDetail.route) { backStackEntry ->
+            val exerciseId = backStackEntry.arguments?.getString("exerciseId") ?: return@composable
+            ExerciseDetailScreen(
+                exerciseId = exerciseId,
+                onNavigateBack = { navController.popBackStack() },
+                onStartWorkout = { navController.navigate(Screen.ActiveWorkout.route) }
             )
         }
 
