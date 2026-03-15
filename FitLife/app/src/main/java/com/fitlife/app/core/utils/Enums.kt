@@ -1,0 +1,33 @@
+package com.fitlife.app.core.utils
+
+enum class Gender { MALE, FEMALE, NOT_SPECIFIED }
+
+enum class FitnessLevel { BEGINNER, INTERMEDIATE, ADVANCED, ATHLETE }
+
+enum class MuscleGroup {
+    CHEST, BACK, SHOULDERS, BICEPS, TRICEPS,
+    FOREARMS, CORE, QUADRICEPS, HAMSTRINGS,
+    GLUTES, CALVES, FULL_BODY, CARDIO
+}
+
+enum class ExerciseType {
+    STRENGTH, CARDIO, FLEXIBILITY, BALANCE, SPORTS, OTHER
+}
+
+enum class Equipment {
+    NONE, BARBELL, DUMBBELL, KETTLEBELL, RESISTANCE_BAND,
+    MACHINE, CABLE, BODYWEIGHT, PULL_UP_BAR, BENCH,
+    TREADMILL, BICYCLE, ROWING_MACHINE, OTHER
+}
+
+enum class WorkoutStatus {
+    PLANNED, IN_PROGRESS, COMPLETED, SKIPPED
+}
+
+enum class NutritionUnit {
+    GRAMS, ML, OZ, CUP, TABLESPOON, TEASPOON, PIECE
+}
+
+enum class MealType {
+    BREAKFAST, LUNCH, DINNER, SNACK, PRE_WORKOUT, POST_WORKOUT
+}
