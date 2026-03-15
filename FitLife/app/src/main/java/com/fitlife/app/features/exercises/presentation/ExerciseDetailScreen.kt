@@ -245,26 +245,3 @@ private fun MuscleChip(muscle: MuscleGroup, primary: Boolean) {
     }
 }
 
-fun ExerciseType.displayName() = when (this) {
-    ExerciseType.STRENGTH -> "Forță"
-    ExerciseType.CARDIO -> "Cardio"
-    ExerciseType.FLEXIBILITY -> "Flexibilitate"
-    ExerciseType.BALANCE -> "Echilibru"
-    ExerciseType.SPORTS -> "Sport"
-    ExerciseType.OTHER -> "Altele"
-}
-
-fun Equipment.displayName() = when (this) {
-    Equipment.NONE -> "Fără echipament"
-    Equipment.BARBELL -> "Bară"
-    Equipment.DUMBBELL -> "Gantere"
-    Equipment.MACHINE -> "Aparat"
-    Equipment.CABLE -> "Cablu"
-    Equipment.BODYWEIGHT -> "Greutate corp"
-    Equipment.RESISTANCE_BAND -> "Bandă elastică"
-    Equipment.KETTLEBELL -> "Kettlebell"
-    Equipment.PULL_UP_BAR -> "Bară tracțiuni"
-    Equipment.BENCH -> "Bancă"
-    Equipment.BICYCLE -> "Bicicletă"
-    Equipment.TREADMILL -> "Bandă alergare"
-}
