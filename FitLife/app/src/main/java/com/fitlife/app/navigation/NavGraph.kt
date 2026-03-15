@@ -15,6 +15,8 @@ import com.fitlife.app.features.nutrition.presentation.AddFoodScreen
 import com.fitlife.app.features.nutrition.presentation.NutritionScreen
 import com.fitlife.app.core.utils.MealType
 import com.fitlife.app.features.profile.presentation.ProfileScreen
+import com.fitlife.app.features.profile.presentation.EditProfileScreen
+import com.fitlife.app.features.profile.presentation.SettingsScreen
 import com.fitlife.app.features.progress.presentation.ProgressScreen
 import com.fitlife.app.features.workout.presentation.active.ActiveWorkoutScreen
 import com.fitlife.app.features.workout.presentation.list.WorkoutListScreen
@@ -34,6 +36,8 @@ sealed class Screen(val route: String) {
     object Progress : Screen("progress")
     object Profile : Screen("profile")
     object AddMeasurement : Screen("add_measurement")
+    object EditProfile : Screen("edit_profile")
+    object Settings : Screen("settings")
     object AddFood : Screen("add_food/{mealType}") {
         fun createRoute(mealType: MealType) = "add_food/${mealType.name}"
     }
@@ -148,14 +152,22 @@ fun FitLifeNavGraph(
 
         composable(Screen.Profile.route) {
             ProfileScreen(
-                onEditProfile = { },
-                onNavigateToSettings = { },
+                onEditProfile = { navController.navigate(Screen.EditProfile.route) },
+                onNavigateToSettings = { navController.navigate(Screen.Settings.route) },
                 onSignOut = {
                     navController.navigate(Screen.Login.route) {
                         popUpTo(0) { inclusive = true }
                     }
                 }
             )
+        }
+
+        composable(Screen.EditProfile.route) {
+            EditProfileScreen(onNavigateBack = { navController.popBackStack() })
+        }
+
+        composable(Screen.Settings.route) {
+            SettingsScreen(onNavigateBack = { navController.popBackStack() })
         }
     }
 }
