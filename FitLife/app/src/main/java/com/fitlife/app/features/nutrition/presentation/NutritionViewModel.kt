@@ -2,7 +2,9 @@ package com.fitlife.app.features.nutrition.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.fitlife.app.core.domain.model.FoodEntry
 import com.fitlife.app.core.domain.model.NutritionLog
+import com.fitlife.app.core.utils.MealType
 import com.fitlife.app.core.utils.startOfDay
 import com.fitlife.app.features.auth.domain.repository.AuthRepository
 import com.fitlife.app.features.nutrition.domain.NutritionRepository
@@ -61,6 +63,13 @@ class NutritionViewModel @Inject constructor(
         val userId = authRepository.currentUser?.uid ?: return
         viewModelScope.launch {
             nutritionRepository.logWater(userId, amountMl)
+        }
+    }
+
+    fun addFoodEntry(mealType: MealType, entry: FoodEntry) {
+        val userId = authRepository.currentUser?.uid ?: return
+        viewModelScope.launch {
+            nutritionRepository.addFoodEntry(userId, System.currentTimeMillis(), mealType, entry)
         }
     }
 

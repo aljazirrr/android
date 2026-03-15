@@ -10,7 +10,9 @@ import com.fitlife.app.features.auth.presentation.login.LoginScreen
 import com.fitlife.app.features.auth.presentation.register.RegisterScreen
 import com.fitlife.app.features.dashboard.presentation.DashboardScreen
 import com.fitlife.app.features.exercises.presentation.ExerciseListScreen
+import com.fitlife.app.features.nutrition.presentation.AddFoodScreen
 import com.fitlife.app.features.nutrition.presentation.NutritionScreen
+import com.fitlife.app.core.utils.MealType
 import com.fitlife.app.features.profile.presentation.ProfileScreen
 import com.fitlife.app.features.progress.presentation.ProgressScreen
 import com.fitlife.app.features.workout.presentation.active.ActiveWorkoutScreen
@@ -30,6 +32,9 @@ sealed class Screen(val route: String) {
     object Progress : Screen("progress")
     object Profile : Screen("profile")
     object AddMeasurement : Screen("add_measurement")
+    object AddFood : Screen("add_food/{mealType}") {
+        fun createRoute(mealType: MealType) = "add_food/${mealType.name}"
+    }
     object ExerciseDetail : Screen("exercise_detail/{exerciseId}") {
         fun createRoute(exerciseId: String) = "exercise_detail/$exerciseId"
     }
@@ -103,7 +108,20 @@ fun FitLifeNavGraph(
         }
 
         composable(Screen.Nutrition.route) {
-            NutritionScreen(onAddFood = { /* Navigate to food picker */ })
+            NutritionScreen(
+                onAddFood = { mealType ->
+                    navController.navigate(Screen.AddFood.createRoute(mealType))
+                }
+            )
+        }
+
+        composable(Screen.AddFood.route) { backStackEntry ->
+            val mealTypeName = backStackEntry.arguments?.getString("mealType") ?: "BREAKFAST"
+            val mealType = try { MealType.valueOf(mealTypeName) } catch (e: Exception) { MealType.BREAKFAST }
+            AddFoodScreen(
+                mealType = mealType,
+                onNavigateBack = { navController.popBackStack() }
+            )
         }
 
         composable(Screen.Progress.route) {
