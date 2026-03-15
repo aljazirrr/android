@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.FitLife" parent="android:Theme.Material.Light.NoActionBar">
+    <style name="Theme.FitLife" parent="Theme.AppCompat.DayNight.NoActionBar">
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
-        <item name="android:windowLightStatusBar">true</item>
-    </style>
-
-    <style name="Theme.FitLife.Splash" parent="Theme.FitLife">
-        <item name="android:windowBackground">@android:color/black</item>
     </style>
 </resources>
