@@ -17,6 +17,7 @@ import com.fitlife.app.core.utils.MealType
 import com.fitlife.app.features.profile.presentation.ProfileScreen
 import com.fitlife.app.features.profile.presentation.EditProfileScreen
 import com.fitlife.app.features.profile.presentation.SettingsScreen
+import com.fitlife.app.features.progress.presentation.AddMeasurementScreen
 import com.fitlife.app.features.progress.presentation.ProgressScreen
 import com.fitlife.app.features.workout.presentation.active.ActiveWorkoutScreen
 import com.fitlife.app.features.workout.presentation.list.WorkoutListScreen
@@ -148,6 +149,10 @@ fun FitLifeNavGraph(
 
         composable(Screen.Progress.route) {
             ProgressScreen(onAddMeasurement = { navController.navigate(Screen.AddMeasurement.route) })
+        }
+
+        composable(Screen.AddMeasurement.route) {
+            AddMeasurementScreen(onNavigateBack = { navController.popBackStack() })
         }
 
         composable(Screen.Profile.route) {
