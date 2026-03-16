@@ -9,9 +9,9 @@ import com.fitlife.app.features.progress.domain.ProgressRepository
 import com.fitlife.app.features.workout.domain.repository.WorkoutRepository
 import com.fitlife.app.features.nutrition.domain.NutritionRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
-import java.util.Calendar
 import javax.inject.Inject
 
 data class DashboardUiState(
@@ -53,6 +53,8 @@ class DashboardViewModel @Inject constructor(
     private val _uiState = MutableStateFlow(DashboardUiState())
     val uiState: StateFlow<DashboardUiState> = _uiState.asStateFlow()
 
+    private var dataJobs: List<Job> = emptyList()
+
     init {
         loadDashboard()
     }
@@ -61,7 +63,7 @@ class DashboardViewModel @Inject constructor(
         viewModelScope.launch {
             authRepository.getCurrentUserFlow()
                 .filterNotNull()
-                .collect { user ->
+                .collectLatest { user ->
                     _uiState.update { it.copy(user = user, isLoading = false) }
                     loadUserData(user.uid)
                 }
@@ -69,52 +71,43 @@ class DashboardViewModel @Inject constructor(
     }
 
     private fun loadUserData(userId: String) {
+        dataJobs.forEach { it.cancel() }
         val today = System.currentTimeMillis()
-        val cal = Calendar.getInstance()
 
-        // Load streak
-        viewModelScope.launch {
-            workoutRepository.getWorkoutStreak(userId).collect { streak ->
-                _uiState.update { it.copy(streak = streak) }
+        dataJobs = listOf(
+            viewModelScope.launch {
+                workoutRepository.getWorkoutStreak(userId).collect { streak ->
+                    _uiState.update { it.copy(streak = streak) }
+                }
+            },
+            viewModelScope.launch {
+                workoutRepository.getRecentSessions(userId, limit = 5).collect { sessions ->
+                    _uiState.update { it.copy(recentWorkouts = sessions) }
+                }
+            },
+            viewModelScope.launch {
+                nutritionRepository.getNutritionLogForDate(userId, today.startOfDay()).collect { log ->
+                    _uiState.update { it.copy(todayNutrition = log) }
+                }
+            },
+            viewModelScope.launch {
+                progressRepository.getStatsForDate(userId, today.startOfDay()).collect { stats ->
+                    _uiState.update { it.copy(todayStats = stats) }
+                }
+            },
+            viewModelScope.launch {
+                progressRepository.getLatestMeasurement(userId).collect { measurement ->
+                    _uiState.update { it.copy(latestMeasurement = measurement) }
+                }
+            },
+            viewModelScope.launch {
+                val weekStart = today.startOfWeek()
+                val weekEnd = today.endOfWeek()
+                workoutRepository.getSessionsInRange(userId, weekStart, weekEnd).collect { sessions ->
+                    _uiState.update { it.copy(weeklyWorkouts = sessions) }
+                }
             }
-        }
-
-        // Load recent workouts
-        viewModelScope.launch {
-            workoutRepository.getRecentSessions(userId, limit = 5).collect { sessions ->
-                _uiState.update { it.copy(recentWorkouts = sessions) }
-            }
-        }
-
-        // Load today's nutrition
-        viewModelScope.launch {
-            nutritionRepository.getNutritionLogForDate(userId, today.startOfDay()).collect { log ->
-                _uiState.update { it.copy(todayNutrition = log) }
-            }
-        }
-
-        // Load today's stats
-        viewModelScope.launch {
-            progressRepository.getStatsForDate(userId, today.startOfDay()).collect { stats ->
-                _uiState.update { it.copy(todayStats = stats) }
-            }
-        }
-
-        // Load latest body measurement
-        viewModelScope.launch {
-            progressRepository.getLatestMeasurement(userId).collect { measurement ->
-                _uiState.update { it.copy(latestMeasurement = measurement) }
-            }
-        }
-
-        // Load weekly workouts
-        viewModelScope.launch {
-            val weekStart = today.startOfWeek()
-            val weekEnd = today.endOfWeek()
-            workoutRepository.getSessionsInRange(userId, weekStart, weekEnd).collect { sessions ->
-                _uiState.update { it.copy(weeklyWorkouts = sessions) }
-            }
-        }
+        )
     }
 
     fun refresh() {

@@ -11,6 +11,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ListenerRegistration
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
@@ -30,10 +31,13 @@ class AuthRepositoryImpl @Inject constructor(
     override val isLoggedIn: Boolean get() = auth.currentUser != null
 
     override fun getCurrentUserFlow(): Flow<User?> = callbackFlow {
+        var snapshotRegistration: ListenerRegistration? = null
         val listener = FirebaseAuth.AuthStateListener { firebaseAuth ->
             val user = firebaseAuth.currentUser
+            snapshotRegistration?.remove()
+            snapshotRegistration = null
             if (user != null) {
-                firestore.collection(FirestoreCollections.USERS).document(user.uid)
+                snapshotRegistration = firestore.collection(FirestoreCollections.USERS).document(user.uid)
                     .addSnapshotListener { snapshot, error ->
                         if (error != null) {
                             Timber.e(error, "Error listening to user")
@@ -47,7 +51,10 @@ class AuthRepositoryImpl @Inject constructor(
             }
         }
         auth.addAuthStateListener(listener)
-        awaitClose { auth.removeAuthStateListener(listener) }
+        awaitClose {
+            auth.removeAuthStateListener(listener)
+            snapshotRegistration?.remove()
+        }
     }
 
     override suspend fun signIn(email: String, password: String): Resource<User> = try {
