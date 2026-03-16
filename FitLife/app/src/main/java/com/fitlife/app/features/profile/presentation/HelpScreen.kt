@@ -83,7 +83,7 @@ fun HelpScreen(onNavigateBack: () -> Unit) {
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.spacedBy(12.dp)
                         ) {
-                            Icon(Icons.Default.HelpOutline, null, tint = FitGreen, modifier = Modifier.size(20.dp))
+                            Icon(Icons.Default.Help, null, tint = FitGreen, modifier = Modifier.size(20.dp))
                             Text(question, style = MaterialTheme.typography.bodyLarge, modifier = Modifier.weight(1f))
                             Icon(
                                 if (expandedFaq == index) Icons.Default.ExpandLess else Icons.Default.ExpandMore,
