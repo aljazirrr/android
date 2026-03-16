@@ -19,7 +19,7 @@ import com.fitlife.app.core.data.local.entities.*
         DailyStatsEntity::class
     ],
     version = 1,
-    exportSchema = true
+    exportSchema = false
 )
 @TypeConverters(Converters::class)
 abstract class FitLifeDatabase : RoomDatabase() {
