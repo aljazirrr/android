@@ -12,6 +12,7 @@
   <meta property="og:url" content="https://sasrobotics.nl" />
   <link rel="canonical" href="https://sasrobotics.nl" />
 
+  <!-- Schema.org LocalBusiness -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -26,7 +27,7 @@
       "addressCountry": "NL"
     },
     "vatID": "NL004860328B47",
-    "description": "ZZP robotlassen programmeur gespecialiseerd in Cloos en Kuka. On-site debugging, cyclustijdoptimalisatie en on-cell programmering.",
+    "description": "ZZP robotlassen programmeur gespecialiseerd in Cloos en Kuka. On-site debugging, cyclustijdoptimalisatie en on-cell programmering voor productiebedrijven in Nederland.",
     "areaServed": "NL",
     "serviceType": ["Robotlassen programmering", "Cyclustijdoptimalisatie", "Debugging lasrobots", "On-cell programmering"]
   }
@@ -36,14 +37,16 @@
     :root {
       --bg: #f5f4f0;
       --bg-card: #ffffff;
-      --bg-alt: #eeede9;
+      --bg-section: #eeede9;
       --text: #1a1a1a;
       --muted: #6b7280;
       --border: #e5e3dc;
       --accent: #2563eb;
-      --green: #16a34a;
-      --green-bg: #dcfce7;
-      --green-border: #86efac;
+      --accent-green: #16a34a;
+      --accent-green-bg: #dcfce7;
+      --accent-green-border: #86efac;
+      --cloos: #e65c00;
+      --kuka: #f59e0b;
       --radius: 12px;
     }
 
@@ -51,16 +54,19 @@
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
       overflow-x: hidden;
+      font-size: 16px;
     }
 
-    /* NAV */
+    /* ── NAV ── */
     nav {
-      position: sticky; top: 0; z-index: 100;
+      position: sticky;
+      top: 0;
+      z-index: 100;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -70,502 +76,775 @@
     }
 
     .logo {
-      display: flex; align-items: center; gap: 0.6rem;
-      font-weight: 700; font-size: 0.95rem;
-      color: var(--text); text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text);
+      text-decoration: none;
     }
 
-    .logo-box {
+    .logo-icon {
       width: 36px; height: 36px;
-      border: 1px solid var(--border); border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 1rem;
     }
 
     .nav-cta {
-      background: var(--text); color: #fff;
-      padding: 0.55rem 1.1rem; border-radius: 8px;
-      text-decoration: none; font-weight: 600; font-size: 0.875rem;
-      white-space: nowrap; transition: opacity 0.2s;
+      background: var(--text);
+      color: #fff;
+      padding: 0.55rem 1.1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.875rem;
+      transition: opacity 0.2s;
+      white-space: nowrap;
     }
-    .nav-cta:hover { opacity: 0.82; }
+    .nav-cta:hover { opacity: 0.85; }
 
-    /* LAYOUT */
-    .wrap {
+    /* ── HERO ── */
+    .hero {
+      padding: 3.5rem 1.5rem 3rem;
       max-width: 680px;
       margin: 0 auto;
-      padding: 0 1.5rem;
     }
 
-    .alt { background: var(--bg-alt); }
-
-    section { padding: 3rem 0; }
-
-    /* HERO */
-    .hero { padding: 3.5rem 0 2.5rem; }
-
-    .badge-pill {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      border: 1px solid #d1d5db; border-radius: 50px;
+    .badge-zzp {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      border: 1px solid #d1d5db;
+      border-radius: 50px;
       padding: 0.3rem 0.9rem;
-      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.6px;
-      color: var(--muted); text-transform: uppercase;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      color: var(--muted);
+      text-transform: uppercase;
       margin-bottom: 1.5rem;
     }
 
-    .badge-pill::before {
+    .badge-zzp::before {
       content: '';
       width: 7px; height: 7px;
-      background: var(--green); border-radius: 50%;
+      background: var(--accent-green);
+      border-radius: 50%;
       animation: blink 2s infinite;
     }
 
     @keyframes blink {
-      0%, 100% { opacity: 1; } 50% { opacity: 0.3; }
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
     }
 
     h1 {
-      font-size: clamp(2rem, 6vw, 2.9rem);
-      font-weight: 800; letter-spacing: -1px; line-height: 1.15;
+      font-size: clamp(2rem, 6vw, 3rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -1px;
       margin-bottom: 1.25rem;
+      color: var(--text);
     }
 
     h1 .blue { color: var(--accent); }
 
     .hero-sub {
-      font-size: 1rem; color: var(--muted);
-      line-height: 1.65; margin-bottom: 0.75rem;
+      font-size: 1rem;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+      line-height: 1.65;
     }
+
     .hero-sub strong { color: var(--text); }
 
     .hero-note {
-      font-size: 0.875rem; color: var(--muted); margin-bottom: 1.75rem;
-    }
-
-    .sla-strip {
-      background: #fffbeb; border: 1px solid #fde68a;
-      border-radius: 8px; padding: 0.65rem 1rem;
-      font-size: 0.82rem; color: #92400e;
-      margin-bottom: 1.75rem;
-    }
-
-    .hero-btns {
-      display: flex; flex-direction: column; gap: 0.75rem;
+      font-size: 0.875rem;
+      color: var(--muted);
       margin-bottom: 2rem;
     }
 
-    @media (min-width: 520px) {
-      .hero-btns { flex-direction: row; }
-      .hero-btns a { flex: 1; }
+    .hero-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 2.5rem;
     }
 
-    .btn-dark {
-      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
-      background: var(--text); color: #fff;
-      padding: 0.9rem 1.5rem; border-radius: var(--radius);
-      text-decoration: none; font-weight: 700; font-size: 1rem;
+    .btn-primary {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: var(--text);
+      color: #fff;
+      padding: 0.9rem 1.5rem;
+      border-radius: var(--radius);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
       transition: opacity 0.2s;
     }
-    .btn-dark:hover { opacity: 0.85; }
+    .btn-primary:hover { opacity: 0.85; }
 
-    .btn-outline {
-      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
-      background: transparent; color: var(--text);
-      padding: 0.9rem 1.5rem; border-radius: var(--radius);
-      text-decoration: none; font-weight: 600; font-size: 1rem;
-      border: 1px solid var(--border); transition: border-color 0.2s;
+    .btn-phone {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: transparent;
+      color: var(--text);
+      padding: 0.9rem 1.5rem;
+      border-radius: var(--radius);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      border: 1px solid var(--border);
+      transition: border-color 0.2s;
     }
-    .btn-outline:hover { border-color: #9ca3af; }
+    .btn-phone:hover { border-color: #9ca3af; }
 
-    .chips-row {
-      display: flex; flex-wrap: wrap; gap: 0.45rem; align-items: center;
+    /* systemen chips */
+    .systemen-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+      margin-bottom: 0.5rem;
     }
 
-    .chip-label { font-size: 0.8rem; color: var(--muted); }
+    .sys-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
 
     .chip {
-      border: 1px solid var(--border); background: var(--bg-card);
-      color: var(--text); padding: 0.22rem 0.65rem;
-      border-radius: 6px; font-size: 0.78rem; font-weight: 500;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text);
+      padding: 0.25rem 0.7rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 500;
     }
 
-    .chip.star {
-      border-color: var(--accent); color: var(--accent); font-weight: 700;
+    .chip.primary-brand {
+      border-color: var(--accent);
+      color: var(--accent);
+      font-weight: 700;
     }
 
-    /* CARDS */
-    .card {
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 1.25rem 1.5rem;
-      margin-bottom: 0.75rem;
+    /* ── INFO CARDS ── */
+    .info-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      padding: 0 1.5rem;
+      max-width: 680px;
+      margin: 0 auto 2.5rem;
     }
 
-    .card-eyebrow {
-      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.8px;
-      text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem;
+    .info-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
     }
 
-    .avail-tag {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      background: var(--green-bg); border: 1px solid var(--green-border);
-      color: var(--green); padding: 0.28rem 0.8rem; border-radius: 50px;
-      font-size: 0.82rem; font-weight: 700; margin-bottom: 0.6rem;
+    .info-card-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
     }
 
-    .avail-tag::before {
-      content: ''; width: 7px; height: 7px;
-      background: var(--green); border-radius: 50%;
+    .avail-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--accent-green-bg);
+      border: 1px solid var(--accent-green-border);
+      color: var(--accent-green);
+      padding: 0.3rem 0.8rem;
+      border-radius: 50px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
     }
 
-    .card p, .card .detail { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
-    .card strong { color: var(--text); }
+    .avail-badge::before {
+      content: '';
+      width: 7px; height: 7px;
+      background: var(--accent-green);
+      border-radius: 50%;
+    }
 
-    /* SECTION HEADER */
-    .eyebrow {
-      font-size: 0.72rem; font-weight: 700; letter-spacing: 1px;
-      text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem;
+    .info-card p { font-size: 0.9rem; color: var(--muted); }
+    .info-card strong { color: var(--text); }
+
+    /* ── SECTIONS ── */
+    .section {
+      padding: 3rem 1.5rem;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .section-alt {
+      background: var(--bg-section);
+      padding: 3rem 0;
+    }
+
+    .section-alt .section {
+      margin: 0 auto;
+    }
+
+    .section-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
     }
 
     h2 {
       font-size: clamp(1.6rem, 4vw, 2rem);
-      font-weight: 800; letter-spacing: -0.5px; margin-bottom: 0.75rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.75rem;
     }
 
-    .sec-desc {
-      font-size: 0.95rem; color: var(--muted);
-      margin-bottom: 2rem; line-height: 1.65;
+    .section-desc {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      line-height: 1.65;
     }
 
-    /* DIENST CARDS */
+    /* diensten cards */
+    .dienst-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
     .dienst-icon {
       width: 36px; height: 36px;
-      border: 1px solid var(--border); border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1rem; margin-bottom: 0.9rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      margin-bottom: 0.9rem;
     }
 
-    .dienst-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.45rem; }
-
-    /* PROBLEMEN */
-    .prob-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
-
-    .prob-list li {
-      display: flex; gap: 0.6rem;
-      font-size: 0.9rem; align-items: flex-start;
+    .dienst-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
     }
 
-    .prob-list li::before {
-      content: '•'; color: var(--accent);
-      font-weight: 700; flex-shrink: 0; margin-top: 1px;
+    .dienst-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
+
+    /* problemen */
+    .prob-group {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 0.75rem;
     }
 
-    /* CASE STUDY */
-    .case-title {
-      font-size: 1.15rem; font-weight: 800; line-height: 1.3; margin-bottom: 0.75rem;
-    }
-    .old { text-decoration: line-through; color: var(--muted); }
-    .groen { color: var(--green); }
-
-    .case-note {
-      font-size: 0.85rem; border-top: 1px solid var(--border);
-      margin-top: 1rem; padding-top: 0.75rem; color: var(--text);
+    .prob-group ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
     }
 
-    /* PLANNING */
-    .details-list {
-      display: flex; flex-direction: column; gap: 0.3rem;
+    .prob-group li {
+      display: flex;
+      gap: 0.6rem;
+      font-size: 0.9rem;
+      color: var(--text);
+      align-items: flex-start;
+    }
+
+    .prob-group li::before {
+      content: '•';
+      color: var(--accent);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* case study */
+    .case-header {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .case-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .case-header h3 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      line-height: 1.3;
+    }
+
+    .case-header h3 .old {
+      text-decoration: line-through;
+      color: var(--muted);
+    }
+
+    .case-header h3 .new { color: var(--accent-green); }
+
+    .case-header p {
       font-size: 0.875rem;
+      color: var(--muted);
+      margin-top: 0.75rem;
+      line-height: 1.6;
     }
-    .details-list span { color: var(--muted); }
-    .details-list strong { color: var(--text); }
 
-    /* TARIEVEN */
-    .tarief-row {
-      display: flex; justify-content: space-between; align-items: center;
-      font-size: 0.875rem; padding: 0.4rem 0;
+    .case-header .note {
+      font-size: 0.85rem;
+      color: var(--text);
+      border-top: 1px solid var(--border);
+      margin-top: 1rem;
+      padding-top: 0.75rem;
+    }
+
+    .case-detail {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.1rem 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .case-detail .label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .case-detail p { font-size: 0.875rem; color: var(--text); }
+    .case-detail .result { color: var(--accent-green); font-weight: 700; }
+
+    /* beschikbaarheid */
+    .planning-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .planning-card .detail-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      font-size: 0.9rem;
+    }
+
+    .planning-card .detail-row span strong { color: var(--text); }
+    .planning-card .detail-row span { color: var(--muted); }
+
+    /* contact */
+    .contact-list {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 0.75rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+      color: var(--text);
+      transition: background 0.15s;
+    }
+
+    .contact-item:last-child { border-bottom: none; }
+    .contact-item:hover { background: var(--bg); }
+
+    .contact-icon {
+      width: 36px; height: 36px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+    }
+
+    .contact-meta { display: flex; flex-direction: column; }
+    .contact-meta .c-label { font-size: 0.75rem; color: var(--muted); }
+    .contact-meta .c-value { font-size: 0.95rem; font-weight: 600; color: var(--accent); }
+
+    /* berichtsjabloon */
+    .template-card {
+      background: var(--bg-card);
+      border: 1px dashed #d1d5db;
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+    }
+
+    .template-card .t-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .template-card pre {
+      font-family: 'Courier New', monospace;
+      font-size: 0.82rem;
+      color: var(--text);
+      white-space: pre-wrap;
+      line-height: 1.7;
+    }
+
+    .template-card pre .placeholder {
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    /* footer */
+    footer {
+      background: var(--bg-card);
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    footer a { color: var(--muted); text-decoration: underline; }
+
+    /* ── RESPONSIVE ── */
+    @media (min-width: 600px) {
+      .hero-actions {
+        flex-direction: row;
+      }
+
+      .btn-primary, .btn-phone {
+        flex: 1;
+      }
+    }
+
+    /* ── RESPONSE SLA BADGE ── */
+    .sla-strip {
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      border-radius: 8px;
+      padding: 0.6rem 1rem;
+      font-size: 0.82rem;
+      color: #92400e;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* ── TARIEF HINT ── */
+    .tarief-strip {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .tarief-strip .t-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+      padding: 0.3rem 0;
       border-bottom: 1px solid var(--border);
     }
-    .tarief-row:last-child { border-bottom: none; }
-    .tarief-row .tn { color: var(--muted); }
-    .tarief-row .tv { font-weight: 700; }
 
-    /* CONTACT */
-    .contact-list-wrap {
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: var(--radius); overflow: hidden; margin-bottom: 0.75rem;
-    }
-
-    .c-item {
-      display: flex; align-items: center; gap: 1rem;
-      padding: 1rem 1.5rem; border-bottom: 1px solid var(--border);
-      text-decoration: none; color: var(--text); transition: background 0.15s;
-    }
-    .c-item:last-child { border-bottom: none; }
-    .c-item:hover { background: var(--bg); }
-
-    .c-icon {
-      width: 36px; height: 36px; border: 1px solid var(--border);
-      border-radius: 8px; display: flex; align-items: center;
-      justify-content: center; font-size: 0.95rem; flex-shrink: 0;
-    }
-
-    .c-meta { display: flex; flex-direction: column; }
-    .c-lbl { font-size: 0.75rem; color: var(--muted); }
-    .c-val { font-size: 0.95rem; font-weight: 600; color: var(--accent); }
-
-    /* TEMPLATE */
-    .template-box {
-      background: var(--bg-card); border: 1px dashed #d1d5db;
-      border-radius: var(--radius); padding: 1.25rem 1.5rem;
-    }
-    .template-box .t-lbl {
-      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.8px;
-      text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem;
-    }
-    .template-box pre {
-      font-family: 'Courier New', monospace; font-size: 0.82rem;
-      color: var(--text); white-space: pre-wrap; line-height: 1.7;
-    }
-    .ph { color: var(--accent); }
-
-    /* FOOTER */
-    footer {
-      background: var(--bg-card); border-top: 1px solid var(--border);
-      padding: 1.5rem; text-align: center;
-      font-size: 0.8rem; color: var(--muted); line-height: 1.9;
-    }
-    footer a { color: var(--muted); text-decoration: underline; }
+    .tarief-strip .t-row:last-child { border-bottom: none; }
+    .tarief-strip .t-row .t-name { color: var(--muted); }
+    .tarief-strip .t-row .t-val { font-weight: 700; color: var(--text); }
   </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
   <a href="/" class="logo">
-    <div class="logo-box">🤖</div>
+    <div class="logo-icon">🤖</div>
     <span>SAS Las en Robottechniek</span>
   </a>
   <a href="#contact" class="nav-cta">Beschikbaarheid checken</a>
 </nav>
 
 <!-- HERO -->
-<div class="alt">
-  <div class="wrap">
-    <div class="hero">
-      <div class="badge-pill">ZZP Robotlassen Programmeur · Nederland</div>
-      <h1>Robotlassen programmering,<br>debugging &amp; <span class="blue">cyclustijdoptimalisatie.</span></h1>
-      <p class="hero-sub">
-        On-site ZZP ondersteuning in Nederland voor
-        <strong>Cloos</strong> en <strong>Kuka</strong> — en ABB, FANUC, Trumpf TrueLaser 5000.
-        Ik help productiebedrijven lasrobots stabieler laten draaien en cyclustijden verlagen met meetbare verbeteringen.
-      </p>
-      <p class="hero-note">Productieprobleem met een lasrobot? Ik kan helpen om de cel binnen korte tijd weer stabiel te krijgen.</p>
+<div class="hero">
+  <div class="badge-zzp">ZZP Robotlassen Programmeur · Nederland</div>
+  <h1>
+    Robotlassen programmering,<br />
+    debugging &amp; <span class="blue">cyclustijdoptimalisatie.</span>
+  </h1>
+  <p class="hero-sub">
+    On-site ZZP ondersteuning in Nederland voor
+    <strong>Cloos</strong>, <strong>Kuka</strong>, ABB, FANUC en Trumpf TrueLaser 5000.
+    Ik help productiebedrijven lasrobots stabieler laten draaien en cyclustijden verlagen met meetbare verbeteringen.
+  </p>
+  <p class="hero-note">Productieprobleem met een lasrobot? Ik kan helpen om de cel binnen korte tijd weer stabiel te krijgen.</p>
 
-      <div class="sla-strip">
-        ⚡ Bij spoed: bel direct — <strong>06 8775 2177</strong>. Een korte beschrijving van het probleem is genoeg.
-      </div>
+  <div class="sla-strip">
+    ⚡ Bij spoed: bel direct — 06 8775 2177. Korte beschrijving van het probleem is genoeg.
+  </div>
 
-      <div class="hero-btns">
-        <a href="#contact" class="btn-dark">→ Beschikbaarheid checken</a>
-        <a href="tel:+31687752177" class="btn-outline">📞 06 8775 2177</a>
-      </div>
+  <div class="hero-actions">
+    <a href="#contact" class="btn-primary">→ Beschikbaarheid checken</a>
+    <a href="tel:+31687752177" class="btn-phone">📞 06 8775 2177</a>
+  </div>
 
-      <div class="chips-row">
-        <span class="chip-label">Systemen:</span>
-        <span class="chip star">Cloos</span>
-        <span class="chip star">Kuka</span>
-        <span class="chip">ABB</span>
-        <span class="chip">FANUC</span>
-        <span class="chip">Trumpf TrueLaser 5000</span>
-        <span class="chip">MIG-MAG</span>
-        <span class="chip">Laser</span>
-      </div>
-    </div>
+  <div class="systemen-row">
+    <span class="sys-label">Systemen:</span>
+    <span class="chip primary-brand">Cloos</span>
+    <span class="chip primary-brand">Kuka</span>
+    <span class="chip">ABB</span>
+    <span class="chip">FANUC</span>
+    <span class="chip">Trumpf TrueLaser 5000</span>
+    <span class="chip">MIG-MAG</span>
+    <span class="chip">Laser</span>
   </div>
 </div>
 
 <!-- INFO CARDS -->
-<div class="wrap" style="padding-top:2rem; padding-bottom:0.5rem;">
-  <div class="card">
-    <div class="card-eyebrow">Beschikbaarheid</div>
-    <div class="avail-tag">Beschikbaar vanaf 1 mei 2026</div>
-    <p>On-site in Nederland. Geschikt voor korte interventies, productiestabilisatie, tijdelijke ondersteuning of langere optimalisatietrajecten. Wekelijkse of tweewekelijkse facturering.</p>
+<div class="info-grid">
+  <div class="info-card">
+    <div class="info-card-label">Beschikbaarheid</div>
+    <div class="avail-badge">Beschikbaar vanaf 1 mei 2026</div>
+    <p>On-site in Nederland. Geschikt voor korte interventies, productiestabilisatie, tijdelijke ondersteuning of langere optimalisatietrajecten.</p>
   </div>
-  <div class="card">
-    <div class="card-eyebrow">Beste match</div>
+
+  <div class="info-card">
+    <div class="info-card-label">Beste match</div>
     <p>Productiebedrijven en integrators met robotlassen, laserlassen of MIG/MAG-cellen.</p>
   </div>
-  <div class="card">
-    <div class="card-eyebrow">Inzet</div>
+
+  <div class="info-card">
+    <div class="info-card-label">Inzet</div>
     <p>Korte interventies <strong>(1–5 dagen)</strong> of langdurige ondersteuning <strong>(weken/maanden)</strong>.</p>
   </div>
-  <div class="card">
-    <div class="card-eyebrow">Werkwijze</div>
+
+  <div class="info-card">
+    <div class="info-card-label">Werkwijze</div>
     <p>Praktisch, direct op de cel, met focus op productie, stabiliteit en duidelijke programmastructuur.</p>
   </div>
 </div>
 
 <!-- DIENSTEN -->
-<section class="alt">
-  <div class="wrap">
-    <div class="eyebrow">Diensten</div>
+<div class="section-alt">
+  <div class="section">
+    <div class="section-eyebrow">Diensten</div>
     <h2>Wat ik voor u doe</h2>
-    <p class="sec-desc">Van acute storingen en instabiel lasgedrag tot structurele cyclustijdverbetering en on-cell programmering.</p>
+    <p class="section-desc">Van acute storingen en instabiel lasgedrag tot structurele cyclustijdverbetering en on-cell programmering.</p>
 
-    <div class="card">
+    <div class="dienst-card">
       <div class="dienst-icon">🔍</div>
-      <h3 class="dienst-card">Debugging &amp; Troubleshooting</h3>
-      <p>Onstabiel lassen, stops, botsingen, foutieve logica of onverwacht robotgedrag direct op de cel analyseren en oplossen — met Cloos en Kuka als primaire expertise.</p>
+      <h3>Debugging &amp; Troubleshooting</h3>
+      <p>Onstabiel lassen, stops, botsingen, foutieve logica of onverwacht robotgedrag direct op de cel analyseren en oplossen — met prioriteit voor Cloos en Kuka systemen.</p>
     </div>
-    <div class="card">
+
+    <div class="dienst-card">
       <div class="dienst-icon">📉</div>
-      <h3 class="dienst-card">Cyclustijd Optimalisatie</h3>
+      <h3>Cyclustijd Optimalisatie</h3>
       <p>Onnodige luchtbewegingen, wachttijden en inefficiënte overgangen terugbrengen zonder kwaliteit of stabiliteit te schaden.</p>
     </div>
-    <div class="card">
+
+    <div class="dienst-card">
       <div class="dienst-icon">&lt;/&gt;</div>
-      <h3 class="dienst-card">On-Cell Programmering</h3>
+      <h3>On-Cell Programmering</h3>
       <p>Vanaf nul programmeren, bestaande routines verbeteren en programma's opbouwen die in productie logisch en onderhoudbaar blijven.</p>
     </div>
   </div>
-</section>
+</div>
 
 <!-- PROBLEMEN -->
-<section>
-  <div class="wrap">
-    <div class="eyebrow">Veelvoorkomende problemen</div>
-    <h2>Herkenbaar in uw productie?</h2>
-    <p class="sec-desc">Dit zijn typische signalen dat een robotcel technisch draait, maar nog niet optimaal presteert.</p>
+<div class="section">
+  <div class="section-eyebrow">Veelvoorkomende problemen</div>
+  <h2>Herkenbaar in uw productie?</h2>
+  <p class="section-desc">Dit zijn typische signalen dat een robotcel technisch draait, maar nog niet optimaal presteert.</p>
 
-    <div class="card">
-      <ul class="prob-list">
-        <li>Robotcel stopt onverwacht of moet regelmatig gereset worden</li>
-        <li>Lassen zijn instabiel of gevoelig voor kleine variaties in de productie</li>
-        <li>Cyclustijd is te hoog en beperkt output</li>
-      </ul>
-    </div>
-    <div class="card">
-      <ul class="prob-list">
-        <li>Programma is moeilijk te volgen of lastig aan te passen</li>
-        <li>Nieuwe producten kosten te veel programmeertijd</li>
-        <li>Twee robots of meerdere stappen lopen niet efficiënt samen</li>
-      </ul>
-    </div>
+  <div class="prob-group">
+    <ul>
+      <li>Robotcel stopt onverwacht of moet regelmatig gereset worden</li>
+      <li>Lassen zijn instabiel of gevoelig voor kleine variaties in de productie</li>
+      <li>Cyclustijd is te hoog en beperkt output</li>
+    </ul>
   </div>
-</section>
 
-<!-- RESULTATEN -->
-<section class="alt">
-  <div class="wrap">
-    <div class="eyebrow">Resultaten</div>
+  <div class="prob-group">
+    <ul>
+      <li>Programma is moeilijk te volgen of lastig aan te passen</li>
+      <li>Nieuwe producten kosten te veel programmeertijd</li>
+      <li>Twee robots of meerdere stappen lopen niet efficiënt samen</li>
+    </ul>
+  </div>
+</div>
+
+<!-- RESULTATEN / CASE STUDY -->
+<div class="section-alt">
+  <div class="section">
+    <div class="section-eyebrow">Resultaten</div>
     <h2>Bewezen resultaat uit productie</h2>
-    <p class="sec-desc">Geen marketingtaal. Gewoon een concreet voorbeeld van wat optimalisatie in de praktijk opleverde.</p>
+    <p class="section-desc">Geen marketingtaal. Gewoon een concreet voorbeeld van wat optimalisatie in de praktijk opleverde.</p>
 
-    <div class="card">
-      <div class="card-eyebrow">Case Study — Trumpf TrueLaser 5000</div>
-      <div class="case-title">
-        Cyclustijd gereduceerd van <span class="old">5,2 min</span> naar <span class="groen">4,1 min</span> per onderdeel
-      </div>
+    <div class="case-header">
+      <div class="case-eyebrow">Case Study — Trumpf TrueLaser 5000</div>
+      <h3>Cyclustijd gereduceerd van <span class="old">5,2 min</span> naar <span class="new">4,1 min</span> per onderdeel</h3>
       <p>Bereikt door onnodige luchtbewegingen te verwijderen, de homepositie dichter bij het armatuur te brengen, de lassnelheid op veilige trajecten te verhogen en parameters gericht af te stellen.</p>
-      <div class="case-note"><strong>Belangrijk:</strong> eerst productie stabiel krijgen, daarna snelheid verhogen. Niet andersom.</div>
+      <div class="note"><strong>Belangrijk:</strong> eerst productie stabiel krijgen, daarna snelheid verhogen. Niet andersom.</div>
     </div>
 
-    <div class="card">
-      <div class="card-eyebrow">Probleem</div>
+    <div class="case-detail">
+      <div class="label">Probleem</div>
       <p>Hoge cyclustijd door inefficiënte bewegingen en niet-optimale overgangen.</p>
     </div>
-    <div class="card">
-      <div class="card-eyebrow">Aanpak</div>
+
+    <div class="case-detail">
+      <div class="label">Aanpak</div>
       <p>Verspilling identificeren, padstrategie verbeteren en parameters veilig afstemmen op de praktijk.</p>
     </div>
-    <div class="card">
-      <div class="card-eyebrow">Resultaat</div>
-      <p><strong class="groen">~21% cyclustijdreductie</strong> (5,2 → 4,1 min per onderdeel).</p>
+
+    <div class="case-detail">
+      <div class="label">Resultaat</div>
+      <p><span class="result">~21% cyclustijdreductie</span> (5,2 → 4,1 min per onderdeel).</p>
     </div>
   </div>
-</section>
+</div>
 
-<!-- PLANNING & TARIEVEN -->
-<section>
-  <div class="wrap">
-    <div class="eyebrow">Beschikbaarheid</div>
-    <h2>Planning &amp; inzetgebied</h2>
+<!-- BESCHIKBAARHEID & TARIEVEN -->
+<div class="section">
+  <div class="section-eyebrow">Beschikbaarheid</div>
+  <h2>Planning &amp; inzetgebied</h2>
 
-    <div class="card">
-      <div class="avail-tag" style="margin-bottom:0.75rem;">Beschikbaar vanaf 1 mei 2026</div>
-      <p style="margin-bottom:1rem;">On-site in Nederland. Geschikt voor korte interventies, productiestabilisatie, tijdelijke ondersteuning of langere optimalisatietrajecten.</p>
-      <div class="details-list">
-        <span><strong>Locatie:</strong> Wageningen / Gelderland</span>
-        <span><strong>Scope:</strong> Laserlassen, MIG/MAG, cobot (licht)</span>
-        <span><strong>Primaire systemen:</strong> Cloos, Kuka</span>
-        <span><strong>Ook:</strong> ABB, FANUC, Trumpf TrueLaser 5000</span>
-        <span><strong>Facturering:</strong> Wekelijks of tweewekelijks</span>
-      </div>
+  <div class="planning-card">
+    <div class="avail-badge" style="margin-bottom:0.75rem;">Beschikbaar vanaf 1 mei 2026</div>
+    <p style="font-size:0.875rem;color:var(--muted);margin-bottom:1rem;">On-site in Nederland. Geschikt voor korte interventies, productiestabilisatie, tijdelijke ondersteuning of langere optimalisatietrajecten.</p>
+    <div class="detail-row">
+      <span><strong>Locatie:</strong> Wageningen / Gelderland</span>
+      <span><strong>Scope:</strong> Laserlassen, MIG/MAG, cobot (licht)</span>
+      <span><strong>Systemen:</strong> Cloos, Kuka, ABB, FANUC, Trumpf TrueLaser 5000</span>
+      <span><strong>Facturering:</strong> Wekelijks of tweewekelijks</span>
     </div>
-
-    <div class="eyebrow" style="margin-top:2.5rem; margin-bottom:0.5rem;">Tarieven</div>
-    <div class="card">
-      <div class="tarief-row">
-        <span class="tn">Korte interventie (1–5 dagen)</span>
-        <span class="tv">Op aanvraag</span>
-      </div>
-      <div class="tarief-row">
-        <span class="tn">Langdurig traject (weken/maanden)</span>
-        <span class="tv">Op aanvraag</span>
-      </div>
-      <div class="tarief-row">
-        <span class="tn">BTW</span>
-        <span class="tv">21% (excl.)</span>
-      </div>
-    </div>
-    <p style="font-size:0.8rem;color:var(--muted);">Reiskosten op basis van werkelijke afstand vanaf Wageningen.</p>
   </div>
-</section>
+
+  <div class="section-eyebrow" style="margin-top:2rem;">Tarieven</div>
+  <div class="tarief-strip">
+    <div class="t-row">
+      <span class="t-name">Dagdeel (4 uur) on-site</span>
+      <span class="t-val">Op aanvraag</span>
+    </div>
+    <div class="t-row">
+      <span class="t-name">Dagrate (8 uur) on-site</span>
+      <span class="t-val">Op aanvraag</span>
+    </div>
+    <div class="t-row">
+      <span class="t-name">Kortlopend project (1–5 dagen)</span>
+      <span class="t-val">Vaste prijs</span>
+    </div>
+    <div class="t-row">
+      <span class="t-name">Langdurig traject (weken/maanden)</span>
+      <span class="t-val">Maandabonnement</span>
+    </div>
+  </div>
+  <p style="font-size:0.8rem;color:var(--muted);margin-top:0.5rem;">Alle tarieven excl. 21% BTW. Reiskosten op basis van werkelijke afstand vanaf Wageningen.</p>
+</div>
 
 <!-- CONTACT -->
-<section class="alt" id="contact">
-  <div class="wrap">
-    <div class="eyebrow">Contact</div>
+<div class="section-alt">
+  <div class="section" id="contact">
+    <div class="section-eyebrow">Contact</div>
     <h2>Neem contact op</h2>
-    <p class="sec-desc">Bel direct of stuur een bericht. Bij technische spoed is een korte omschrijving van het probleem genoeg.</p>
+    <p class="section-desc">Bel direct of stuur een bericht. Bij technische spoed is een korte omschrijving van het probleem genoeg.</p>
 
-    <div class="contact-list-wrap">
-      <a href="tel:+31687752177" class="c-item">
-        <div class="c-icon">📞</div>
-        <div class="c-meta">
-          <span class="c-lbl">Telefoon</span>
-          <span class="c-val">06 8775 2177</span>
+    <div class="contact-list">
+      <a href="tel:+31687752177" class="contact-item">
+        <div class="contact-icon">📞</div>
+        <div class="contact-meta">
+          <span class="c-label">Telefoon</span>
+          <span class="c-value">06 8775 2177</span>
         </div>
       </a>
-      <a href="mailto:info@sasrobotics.nl" class="c-item">
-        <div class="c-icon">✉️</div>
-        <div class="c-meta">
-          <span class="c-lbl">E-mail</span>
-          <span class="c-val">info@sasrobotics.nl</span>
+      <a href="mailto:info@sasrobotics.nl" class="contact-item">
+        <div class="contact-icon">✉️</div>
+        <div class="contact-meta">
+          <span class="c-label">E-mail</span>
+          <span class="c-value">info@sasrobotics.nl</span>
         </div>
       </a>
-      <a href="https://linkedin.com/in/sasrobotics" target="_blank" rel="noopener" class="c-item">
-        <div class="c-icon">💼</div>
-        <div class="c-meta">
-          <span class="c-lbl">LinkedIn</span>
-          <span class="c-val">LinkedIn profiel</span>
+      <a href="https://linkedin.com/company/sas-las-en-robottechniek" target="_blank" rel="noopener" class="contact-item">
+        <div class="contact-icon">💼</div>
+        <div class="contact-meta">
+          <span class="c-label">LinkedIn</span>
+          <span class="c-value">LinkedIn profiel</span>
+        </div>
+      </a>
+      <a href="https://sasrobotics.nl" class="contact-item">
+        <div class="contact-icon">🌐</div>
+        <div class="contact-meta">
+          <span class="c-label">Website</span>
+          <span class="c-value">sasrobotics.nl</span>
         </div>
       </a>
     </div>
 
-    <div class="template-box">
-      <div class="t-lbl">Snelle berichtsjabloon</div>
+    <div class="template-card">
+      <div class="t-label">Snelle berichtsjabloon</div>
       <pre>Hallo, wij hebben on-site robotlassen
 ondersteuning nodig.
 
-Merk/systeem: <span class="ph">[bijv. Cloos / Kuka]</span>
-Probleem: <span class="ph">[omschrijf kort]</span>
-Gewenste start: <span class="ph">[datum]</span>
+Merk/systeem: <span class="placeholder">[bijv. Cloos / Kuka]</span>
+Probleem: <span class="placeholder">[omschrijf kort]</span>
+Gewenste start: <span class="placeholder">[datum]</span>
 
 Kunt u beschikbaarheid bevestigen?</pre>
     </div>
   </div>
-</section>
+</div>
 
+<!-- FOOTER -->
 <footer>
   <p>© SAS Las en Robottechniek — Wageningen, Nederland</p>
   <p>KVK: 91035066 &nbsp;·&nbsp; BTW: NL004860328B47 &nbsp;·&nbsp; <a href="/privacyverklaring">Privacyverklaring</a></p>
