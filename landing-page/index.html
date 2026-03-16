@@ -3,33 +3,56 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SAS Robotics – Freelance Robotica & Software Engineer | ZZP Nederland</title>
-  <meta name="description" content="Freelance robotica- en software-engineer beschikbaar als ZZP. Gespecialiseerd in robotica, embedded systems, Android en automatisering. Neem contact op voor een vrijblijvend gesprek." />
-  <meta name="keywords" content="ZZP robotica, freelance robotics engineer Nederland, embedded systems, ROS, Android developer, automatisering, SAS Robotics" />
-  <meta property="og:title" content="SAS Robotics – Freelance Robotica & Software Engineer" />
-  <meta property="og:description" content="Freelance robotica- en software-engineer. Beschikbaar voor projecten in robotica, embedded, Android en automatisering." />
+  <title>ZZP Robotlassen Programmeur | Cloos & Kuka specialist – SAS Las en Robottechniek</title>
+  <meta name="description" content="ZZP robotlassen programmeur gespecialiseerd in Cloos en Kuka. On-site debugging, cyclustijdoptimalisatie en on-cell programmering voor productiebedrijven in Nederland. Beschikbaar vanaf 1 mei 2026." />
+  <meta name="keywords" content="ZZP robotlassen programmeur, Cloos programmeren, Kuka programmeren, ABB FANUC robotlassen Nederland, cyclustijdoptimalisatie, on-site lasrobot, Wageningen Gelderland" />
+  <meta property="og:title" content="ZZP Robotlassen Programmeur – Cloos & Kuka | SAS Las en Robottechniek" />
+  <meta property="og:description" content="On-site robotlassen programmering, debugging en cyclustijdoptimalisatie. Specialist in Cloos en Kuka. Beschikbaar voor productiebedrijven in heel Nederland." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://sasrobotics.nl" />
   <link rel="canonical" href="https://sasrobotics.nl" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "SAS Las en Robottechniek",
+    "url": "https://sasrobotics.nl",
+    "telephone": "+31687752177",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Wageningen",
+      "addressRegion": "Gelderland",
+      "addressCountry": "NL"
+    },
+    "vatID": "NL004860328B47",
+    "description": "ZZP robotlassen programmeur gespecialiseerd in Cloos en Kuka. On-site debugging, cyclustijdoptimalisatie en on-cell programmering.",
+    "areaServed": "NL",
+    "serviceType": ["Robotlassen programmering", "Cyclustijdoptimalisatie", "Debugging lasrobots", "On-cell programmering"]
+  }
+  </script>
+
   <style>
     :root {
-      --primary: #0a0f1e;
-      --accent: #00d4ff;
-      --accent2: #7c3aed;
-      --text: #e2e8f0;
-      --muted: #94a3b8;
-      --card: #0f172a;
-      --border: rgba(0, 212, 255, 0.15);
-      --gradient: linear-gradient(135deg, #00d4ff 0%, #7c3aed 100%);
+      --bg: #f5f4f0;
+      --bg-card: #ffffff;
+      --bg-alt: #eeede9;
+      --text: #1a1a1a;
+      --muted: #6b7280;
+      --border: #e5e3dc;
+      --accent: #2563eb;
+      --green: #16a34a;
+      --green-bg: #dcfce7;
+      --green-border: #86efac;
+      --radius: 12px;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      background: var(--primary);
+      font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
       color: var(--text);
       line-height: 1.6;
       overflow-x: hidden;
@@ -37,802 +60,516 @@
 
     /* NAV */
     nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
+      position: sticky; top: 0; z-index: 100;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 2rem;
-      background: rgba(10, 15, 30, 0.85);
-      backdrop-filter: blur(12px);
+      padding: 0.9rem 1.5rem;
+      background: var(--bg-card);
       border-bottom: 1px solid var(--border);
     }
 
     .logo {
-      font-size: 1.4rem;
-      font-weight: 700;
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      letter-spacing: -0.5px;
+      display: flex; align-items: center; gap: 0.6rem;
+      font-weight: 700; font-size: 0.95rem;
+      color: var(--text); text-decoration: none;
     }
 
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
+    .logo-box {
+      width: 36px; height: 36px;
+      border: 1px solid var(--border); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
     }
-
-    .nav-links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover { color: var(--accent); }
 
     .nav-cta {
-      background: var(--gradient);
-      color: white !important;
-      padding: 0.5rem 1.2rem;
-      border-radius: 6px;
-      font-weight: 600;
-      font-size: 0.85rem !important;
-      transition: opacity 0.2s !important;
+      background: var(--text); color: #fff;
+      padding: 0.55rem 1.1rem; border-radius: 8px;
+      text-decoration: none; font-weight: 600; font-size: 0.875rem;
+      white-space: nowrap; transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.82; }
+
+    /* LAYOUT */
+    .wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
     }
 
-    .nav-cta:hover { opacity: 0.85; color: white !important; }
+    .alt { background: var(--bg-alt); }
+
+    section { padding: 3rem 0; }
 
     /* HERO */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 6rem 2rem 4rem;
-      position: relative;
-      overflow: hidden;
-    }
+    .hero { padding: 3.5rem 0 2.5rem; }
 
-    .hero::before {
-      content: '';
-      position: absolute;
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(0,212,255,0.08) 0%, transparent 70%);
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      pointer-events: none;
-    }
-
-    .hero::after {
-      content: '';
-      position: absolute;
-      width: 400px; height: 400px;
-      background: radial-gradient(circle, rgba(124,58,237,0.06) 0%, transparent 70%);
-      top: 30%; right: 10%;
-      pointer-events: none;
-    }
-
-    .hero-content { max-width: 760px; position: relative; z-index: 1; }
-
-    .badge {
-      display: inline-block;
-      background: rgba(0, 212, 255, 0.1);
-      border: 1px solid rgba(0, 212, 255, 0.3);
-      color: var(--accent);
-      padding: 0.35rem 1rem;
-      border-radius: 50px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.5px;
+    .badge-pill {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      border: 1px solid #d1d5db; border-radius: 50px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.6px;
+      color: var(--muted); text-transform: uppercase;
       margin-bottom: 1.5rem;
-      text-transform: uppercase;
+    }
+
+    .badge-pill::before {
+      content: '';
+      width: 7px; height: 7px;
+      background: var(--green); border-radius: 50%;
+      animation: blink 2s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; } 50% { opacity: 0.3; }
     }
 
     h1 {
-      font-size: clamp(2.2rem, 5vw, 3.8rem);
-      font-weight: 800;
-      line-height: 1.15;
-      margin-bottom: 1.5rem;
-      letter-spacing: -1px;
+      font-size: clamp(2rem, 6vw, 2.9rem);
+      font-weight: 800; letter-spacing: -1px; line-height: 1.15;
+      margin-bottom: 1.25rem;
     }
 
-    h1 .highlight {
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
+    h1 .blue { color: var(--accent); }
 
     .hero-sub {
-      font-size: 1.15rem;
-      color: var(--muted);
-      max-width: 580px;
-      margin: 0 auto 2.5rem;
-      line-height: 1.7;
+      font-size: 1rem; color: var(--muted);
+      line-height: 1.65; margin-bottom: 0.75rem;
+    }
+    .hero-sub strong { color: var(--text); }
+
+    .hero-note {
+      font-size: 0.875rem; color: var(--muted); margin-bottom: 1.75rem;
     }
 
-    .hero-actions {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
+    .sla-strip {
+      background: #fffbeb; border: 1px solid #fde68a;
+      border-radius: 8px; padding: 0.65rem 1rem;
+      font-size: 0.82rem; color: #92400e;
+      margin-bottom: 1.75rem;
     }
 
-    .btn-primary {
-      background: var(--gradient);
-      color: white;
-      padding: 0.85rem 2rem;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 1rem;
-      transition: transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 4px 20px rgba(0, 212, 255, 0.25);
+    .hero-btns {
+      display: flex; flex-direction: column; gap: 0.75rem;
+      margin-bottom: 2rem;
     }
 
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(0, 212, 255, 0.4);
+    @media (min-width: 520px) {
+      .hero-btns { flex-direction: row; }
+      .hero-btns a { flex: 1; }
     }
 
-    .btn-secondary {
-      background: transparent;
-      color: var(--text);
-      padding: 0.85rem 2rem;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1rem;
-      border: 1px solid var(--border);
-      transition: border-color 0.2s, color 0.2s;
+    .btn-dark {
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+      background: var(--text); color: #fff;
+      padding: 0.9rem 1.5rem; border-radius: var(--radius);
+      text-decoration: none; font-weight: 700; font-size: 1rem;
+      transition: opacity 0.2s;
+    }
+    .btn-dark:hover { opacity: 0.85; }
+
+    .btn-outline {
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+      background: transparent; color: var(--text);
+      padding: 0.9rem 1.5rem; border-radius: var(--radius);
+      text-decoration: none; font-weight: 600; font-size: 1rem;
+      border: 1px solid var(--border); transition: border-color 0.2s;
+    }
+    .btn-outline:hover { border-color: #9ca3af; }
+
+    .chips-row {
+      display: flex; flex-wrap: wrap; gap: 0.45rem; align-items: center;
     }
 
-    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+    .chip-label { font-size: 0.8rem; color: var(--muted); }
 
-    .hero-stats {
-      display: flex;
-      gap: 3rem;
-      justify-content: center;
-      margin-top: 3.5rem;
-      flex-wrap: wrap;
+    .chip {
+      border: 1px solid var(--border); background: var(--bg-card);
+      color: var(--text); padding: 0.22rem 0.65rem;
+      border-radius: 6px; font-size: 0.78rem; font-weight: 500;
     }
 
-    .stat { text-align: center; }
-    .stat-num {
-      font-size: 1.8rem;
-      font-weight: 800;
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+    .chip.star {
+      border-color: var(--accent); color: var(--accent); font-weight: 700;
     }
-    .stat-label { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
 
-    /* SECTIONS */
-    section { padding: 5rem 2rem; }
-
-    .container { max-width: 1100px; margin: 0 auto; }
-
-    .section-label {
-      font-size: 0.8rem;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-weight: 600;
+    /* CARDS */
+    .card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.25rem 1.5rem;
       margin-bottom: 0.75rem;
+    }
+
+    .card-eyebrow {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.8px;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem;
+    }
+
+    .avail-tag {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: var(--green-bg); border: 1px solid var(--green-border);
+      color: var(--green); padding: 0.28rem 0.8rem; border-radius: 50px;
+      font-size: 0.82rem; font-weight: 700; margin-bottom: 0.6rem;
+    }
+
+    .avail-tag::before {
+      content: ''; width: 7px; height: 7px;
+      background: var(--green); border-radius: 50%;
+    }
+
+    .card p, .card .detail { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
+    .card strong { color: var(--text); }
+
+    /* SECTION HEADER */
+    .eyebrow {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem;
     }
 
     h2 {
-      font-size: clamp(1.8rem, 3vw, 2.6rem);
-      font-weight: 800;
-      margin-bottom: 1rem;
-      letter-spacing: -0.5px;
+      font-size: clamp(1.6rem, 4vw, 2rem);
+      font-weight: 800; letter-spacing: -0.5px; margin-bottom: 0.75rem;
     }
 
-    .section-desc {
-      color: var(--muted);
-      font-size: 1.05rem;
-      max-width: 560px;
-      margin-bottom: 3rem;
+    .sec-desc {
+      font-size: 0.95rem; color: var(--muted);
+      margin-bottom: 2rem; line-height: 1.65;
     }
 
-    /* SERVICES */
-    #diensten { background: rgba(15, 23, 42, 0.5); }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .service-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 2rem;
-      transition: border-color 0.3s, transform 0.3s;
-    }
-
-    .service-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-4px);
-    }
-
-    .service-icon {
-      font-size: 2.2rem;
-      margin-bottom: 1rem;
-    }
-
-    .service-card h3 {
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 0.75rem;
-    }
-
-    .service-card p { color: var(--muted); font-size: 0.95rem; }
-
-    /* SKILLS */
-    .skills-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: start;
-    }
-
-    .skill-group { margin-bottom: 2rem; }
-    .skill-group h4 {
-      color: var(--accent);
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 0.75rem;
-    }
-
-    .skill-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .tag {
-      background: rgba(0, 212, 255, 0.08);
-      border: 1px solid rgba(0, 212, 255, 0.2);
-      color: var(--text);
-      padding: 0.3rem 0.75rem;
-      border-radius: 4px;
-      font-size: 0.85rem;
-      font-family: 'Courier New', monospace;
-    }
-
-    .why-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.5rem;
-    }
-
-    .why-item {
-      display: flex;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-      align-items: flex-start;
-    }
-
-    .why-item:last-child { margin-bottom: 0; }
-
-    .why-icon {
+    /* DIENST CARDS */
+    .dienst-icon {
       width: 36px; height: 36px;
-      background: rgba(0, 212, 255, 0.1);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-      flex-shrink: 0;
+      border: 1px solid var(--border); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; margin-bottom: 0.9rem;
     }
 
-    .why-text h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem; }
-    .why-text p { font-size: 0.875rem; color: var(--muted); }
+    .dienst-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.45rem; }
 
-    /* PROCESS */
-    #werkwijze { background: rgba(15, 23, 42, 0.5); }
+    /* PROBLEMEN */
+    .prob-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
 
-    .process-steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.5rem;
+    .prob-list li {
+      display: flex; gap: 0.6rem;
+      font-size: 0.9rem; align-items: flex-start;
     }
 
-    .step {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.75rem;
-      position: relative;
+    .prob-list li::before {
+      content: '•'; color: var(--accent);
+      font-weight: 700; flex-shrink: 0; margin-top: 1px;
     }
 
-    .step-num {
-      font-size: 2.5rem;
-      font-weight: 900;
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      line-height: 1;
-      margin-bottom: 0.75rem;
+    /* CASE STUDY */
+    .case-title {
+      font-size: 1.15rem; font-weight: 800; line-height: 1.3; margin-bottom: 0.75rem;
+    }
+    .old { text-decoration: line-through; color: var(--muted); }
+    .groen { color: var(--green); }
+
+    .case-note {
+      font-size: 0.85rem; border-top: 1px solid var(--border);
+      margin-top: 1rem; padding-top: 0.75rem; color: var(--text);
     }
 
-    .step h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .step p { color: var(--muted); font-size: 0.875rem; }
+    /* PLANNING */
+    .details-list {
+      display: flex; flex-direction: column; gap: 0.3rem;
+      font-size: 0.875rem;
+    }
+    .details-list span { color: var(--muted); }
+    .details-list strong { color: var(--text); }
 
-    /* PRICING */
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      max-width: 900px;
+    /* TARIEVEN */
+    .tarief-row {
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.875rem; padding: 0.4rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .tarief-row:last-child { border-bottom: none; }
+    .tarief-row .tn { color: var(--muted); }
+    .tarief-row .tv { font-weight: 700; }
+
+    /* CONTACT */
+    .contact-list-wrap {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden; margin-bottom: 0.75rem;
     }
 
-    .pricing-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 2rem;
+    .c-item {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1rem 1.5rem; border-bottom: 1px solid var(--border);
+      text-decoration: none; color: var(--text); transition: background 0.15s;
+    }
+    .c-item:last-child { border-bottom: none; }
+    .c-item:hover { background: var(--bg); }
+
+    .c-icon {
+      width: 36px; height: 36px; border: 1px solid var(--border);
+      border-radius: 8px; display: flex; align-items: center;
+      justify-content: center; font-size: 0.95rem; flex-shrink: 0;
     }
 
-    .pricing-card.featured {
-      border-color: var(--accent);
-      position: relative;
+    .c-meta { display: flex; flex-direction: column; }
+    .c-lbl { font-size: 0.75rem; color: var(--muted); }
+    .c-val { font-size: 0.95rem; font-weight: 600; color: var(--accent); }
+
+    /* TEMPLATE */
+    .template-box {
+      background: var(--bg-card); border: 1px dashed #d1d5db;
+      border-radius: var(--radius); padding: 1.25rem 1.5rem;
     }
-
-    .pricing-card.featured::before {
-      content: 'Populair';
-      position: absolute;
-      top: -12px; left: 50%; transform: translateX(-50%);
-      background: var(--gradient);
-      color: white;
-      padding: 0.25rem 0.75rem;
-      border-radius: 50px;
-      font-size: 0.75rem;
-      font-weight: 700;
+    .template-box .t-lbl {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.8px;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem;
     }
-
-    .pricing-type {
-      color: var(--muted);
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 0.5rem;
+    .template-box pre {
+      font-family: 'Courier New', monospace; font-size: 0.82rem;
+      color: var(--text); white-space: pre-wrap; line-height: 1.7;
     }
-
-    .pricing-rate {
-      font-size: 2.2rem;
-      font-weight: 800;
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 0.25rem;
-    }
-
-    .pricing-note { color: var(--muted); font-size: 0.8rem; margin-bottom: 1.5rem; }
-
-    .pricing-features { list-style: none; }
-    .pricing-features li {
-      color: var(--muted);
-      font-size: 0.9rem;
-      padding: 0.4rem 0;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      display: flex;
-      gap: 0.5rem;
-      align-items: center;
-    }
-    .pricing-features li::before { content: '✓'; color: var(--accent); font-weight: 700; }
-    .pricing-features li:last-child { border-bottom: none; }
-
-    /* CTA */
-    #contact {
-      background: linear-gradient(135deg, rgba(0,212,255,0.05) 0%, rgba(124,58,237,0.05) 100%);
-      border-top: 1px solid var(--border);
-      text-align: center;
-    }
-
-    .contact-card {
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .contact-methods {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 2rem;
-    }
-
-    .contact-link {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--card);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 0.75rem 1.5rem;
-      border-radius: 8px;
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: border-color 0.2s, color 0.2s;
-    }
-
-    .contact-link:hover { border-color: var(--accent); color: var(--accent); }
-
-    .availability {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(34, 197, 94, 0.1);
-      border: 1px solid rgba(34, 197, 94, 0.3);
-      color: #4ade80;
-      padding: 0.4rem 1rem;
-      border-radius: 50px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-bottom: 1.5rem;
-    }
-
-    .availability::before {
-      content: '';
-      width: 8px; height: 8px;
-      background: #4ade80;
-      border-radius: 50%;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
-    }
+    .ph { color: var(--accent); }
 
     /* FOOTER */
     footer {
-      background: rgba(15, 23, 42, 0.8);
-      border-top: 1px solid var(--border);
-      padding: 2rem;
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.85rem;
+      background: var(--bg-card); border-top: 1px solid var(--border);
+      padding: 1.5rem; text-align: center;
+      font-size: 0.8rem; color: var(--muted); line-height: 1.9;
     }
-
-    footer a { color: var(--accent); text-decoration: none; }
-
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .skills-layout { grid-template-columns: 1fr; }
-      .hero-stats { gap: 2rem; }
-    }
-
-    /* SCROLL ANIMATION */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    footer a { color: var(--muted); text-decoration: underline; }
   </style>
 </head>
 <body>
 
-<!-- NAVIGATION -->
 <nav>
-  <div class="logo">SAS Robotics</div>
-  <ul class="nav-links">
-    <li><a href="#diensten">Diensten</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#werkwijze">Werkwijze</a></li>
-    <li><a href="#tarieven">Tarieven</a></li>
-    <li><a href="#contact" class="nav-cta">Contact</a></li>
-  </ul>
+  <a href="/" class="logo">
+    <div class="logo-box">🤖</div>
+    <span>SAS Las en Robottechniek</span>
+  </a>
+  <a href="#contact" class="nav-cta">Beschikbaarheid checken</a>
 </nav>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="hero-content">
-    <div class="badge">Beschikbaar voor opdrachten</div>
-    <h1>
-      Freelance <span class="highlight">Robotica</span><br />
-      &amp; Software Engineer
-    </h1>
-    <p class="hero-sub">
-      Ik help bedrijven met het ontwerpen, bouwen en optimaliseren van
-      roboticasystemen, embedded software en Android-applicaties.
-      Snel, pragmatisch en resultaatgericht.
-    </p>
-    <div class="hero-actions">
-      <a href="#contact" class="btn-primary">Neem contact op</a>
-      <a href="#diensten" class="btn-secondary">Bekijk diensten</a>
-    </div>
-    <div class="hero-stats">
-      <div class="stat">
-        <div class="stat-num">5+</div>
-        <div class="stat-label">Jaar ervaring</div>
+<div class="alt">
+  <div class="wrap">
+    <div class="hero">
+      <div class="badge-pill">ZZP Robotlassen Programmeur · Nederland</div>
+      <h1>Robotlassen programmering,<br>debugging &amp; <span class="blue">cyclustijdoptimalisatie.</span></h1>
+      <p class="hero-sub">
+        On-site ZZP ondersteuning in Nederland voor
+        <strong>Cloos</strong> en <strong>Kuka</strong> — en ABB, FANUC, Trumpf TrueLaser 5000.
+        Ik help productiebedrijven lasrobots stabieler laten draaien en cyclustijden verlagen met meetbare verbeteringen.
+      </p>
+      <p class="hero-note">Productieprobleem met een lasrobot? Ik kan helpen om de cel binnen korte tijd weer stabiel te krijgen.</p>
+
+      <div class="sla-strip">
+        ⚡ Bij spoed: bel direct — <strong>06 8775 2177</strong>. Een korte beschrijving van het probleem is genoeg.
       </div>
-      <div class="stat">
-        <div class="stat-num">20+</div>
-        <div class="stat-label">Projecten</div>
+
+      <div class="hero-btns">
+        <a href="#contact" class="btn-dark">→ Beschikbaarheid checken</a>
+        <a href="tel:+31687752177" class="btn-outline">📞 06 8775 2177</a>
       </div>
-      <div class="stat">
-        <div class="stat-num">€85</div>
-        <div class="stat-label">Uurtarief excl. BTW</div>
+
+      <div class="chips-row">
+        <span class="chip-label">Systemen:</span>
+        <span class="chip star">Cloos</span>
+        <span class="chip star">Kuka</span>
+        <span class="chip">ABB</span>
+        <span class="chip">FANUC</span>
+        <span class="chip">Trumpf TrueLaser 5000</span>
+        <span class="chip">MIG-MAG</span>
+        <span class="chip">Laser</span>
       </div>
     </div>
   </div>
-</section>
+</div>
+
+<!-- INFO CARDS -->
+<div class="wrap" style="padding-top:2rem; padding-bottom:0.5rem;">
+  <div class="card">
+    <div class="card-eyebrow">Beschikbaarheid</div>
+    <div class="avail-tag">Beschikbaar vanaf 1 mei 2026</div>
+    <p>On-site in Nederland. Geschikt voor korte interventies, productiestabilisatie, tijdelijke ondersteuning of langere optimalisatietrajecten. Wekelijkse of tweewekelijkse facturering.</p>
+  </div>
+  <div class="card">
+    <div class="card-eyebrow">Beste match</div>
+    <p>Productiebedrijven en integrators met robotlassen, laserlassen of MIG/MAG-cellen.</p>
+  </div>
+  <div class="card">
+    <div class="card-eyebrow">Inzet</div>
+    <p>Korte interventies <strong>(1–5 dagen)</strong> of langdurige ondersteuning <strong>(weken/maanden)</strong>.</p>
+  </div>
+  <div class="card">
+    <div class="card-eyebrow">Werkwijze</div>
+    <p>Praktisch, direct op de cel, met focus op productie, stabiliteit en duidelijke programmastructuur.</p>
+  </div>
+</div>
 
 <!-- DIENSTEN -->
-<section id="diensten">
-  <div class="container">
-    <div class="section-label">Wat ik doe</div>
-    <h2>Diensten</h2>
-    <p class="section-desc">
-      Van roboticaprototype tot productieklare software — ik lever concrete resultaten.
-    </p>
-    <div class="services-grid">
-      <div class="service-card fade-in">
-        <div class="service-icon">🤖</div>
-        <h3>Robotica Engineering</h3>
-        <p>ROS/ROS2, motion planning, sensor integratie en real-time besturingsystemen voor industriële en onderzoeksrobotica.</p>
-      </div>
-      <div class="service-card fade-in">
-        <div class="service-icon">⚙️</div>
-        <h3>Embedded Systems</h3>
-        <p>Firmware ontwikkeling voor microcontrollers (STM32, ESP32, Arduino), RTOS en hardware-software co-design.</p>
-      </div>
-      <div class="service-card fade-in">
-        <div class="service-icon">📱</div>
-        <h3>Android Development</h3>
-        <p>Native Android-apps in Kotlin met Jetpack Compose, MVVM-architectuur en Bluetooth/IoT-integraties voor robotica.</p>
-      </div>
-      <div class="service-card fade-in">
-        <div class="service-icon">🔬</div>
-        <h3>Computer Vision</h3>
-        <p>Object detectie, tracking en beeldverwerking met OpenCV, TensorFlow Lite en RealSense/camera-integraties.</p>
-      </div>
-      <div class="service-card fade-in">
-        <div class="service-icon">🏭</div>
-        <h3>Automatisering</h3>
-        <p>Proceautomatisering, PLC-integratie en het ontwerpen van autonome systemen voor productieomgevingen.</p>
-      </div>
-      <div class="service-card fade-in">
-        <div class="service-icon">📋</div>
-        <h3>Technisch Advies</h3>
-        <p>Feasibility studies, architectuurreviews en technische begeleiding bij robotica- en IoT-projecten.</p>
-      </div>
+<section class="alt">
+  <div class="wrap">
+    <div class="eyebrow">Diensten</div>
+    <h2>Wat ik voor u doe</h2>
+    <p class="sec-desc">Van acute storingen en instabiel lasgedrag tot structurele cyclustijdverbetering en on-cell programmering.</p>
+
+    <div class="card">
+      <div class="dienst-icon">🔍</div>
+      <h3 class="dienst-card">Debugging &amp; Troubleshooting</h3>
+      <p>Onstabiel lassen, stops, botsingen, foutieve logica of onverwacht robotgedrag direct op de cel analyseren en oplossen — met Cloos en Kuka als primaire expertise.</p>
+    </div>
+    <div class="card">
+      <div class="dienst-icon">📉</div>
+      <h3 class="dienst-card">Cyclustijd Optimalisatie</h3>
+      <p>Onnodige luchtbewegingen, wachttijden en inefficiënte overgangen terugbrengen zonder kwaliteit of stabiliteit te schaden.</p>
+    </div>
+    <div class="card">
+      <div class="dienst-icon">&lt;/&gt;</div>
+      <h3 class="dienst-card">On-Cell Programmering</h3>
+      <p>Vanaf nul programmeren, bestaande routines verbeteren en programma's opbouwen die in productie logisch en onderhoudbaar blijven.</p>
     </div>
   </div>
 </section>
 
-<!-- SKILLS -->
-<section id="skills">
-  <div class="container">
-    <div class="section-label">Expertise</div>
-    <h2>Skills &amp; Technologieën</h2>
-    <div class="skills-layout">
-      <div>
-        <div class="skill-group">
-          <h4>Robotica</h4>
-          <div class="skill-tags">
-            <span class="tag">ROS2</span>
-            <span class="tag">ROS1</span>
-            <span class="tag">Gazebo</span>
-            <span class="tag">MoveIt</span>
-            <span class="tag">Nav2</span>
-            <span class="tag">URDF</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <h4>Embedded &amp; Hardware</h4>
-          <div class="skill-tags">
-            <span class="tag">STM32</span>
-            <span class="tag">ESP32</span>
-            <span class="tag">FreeRTOS</span>
-            <span class="tag">CAN bus</span>
-            <span class="tag">I2C/SPI</span>
-            <span class="tag">UART</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <h4>Programmeertalen</h4>
-          <div class="skill-tags">
-            <span class="tag">C++</span>
-            <span class="tag">Python</span>
-            <span class="tag">Kotlin</span>
-            <span class="tag">Java</span>
-            <span class="tag">Bash</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <h4>Computer Vision &amp; AI</h4>
-          <div class="skill-tags">
-            <span class="tag">OpenCV</span>
-            <span class="tag">YOLO</span>
-            <span class="tag">TensorFlow</span>
-            <span class="tag">RealSense</span>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div class="why-card">
-          <div class="why-item">
-            <div class="why-icon">⚡</div>
-            <div class="why-text">
-              <h4>Snelle opstart</h4>
-              <p>Geen lange inwerkperiodes. Ik ben productief vanaf dag 1 dankzij brede ervaring in de sector.</p>
-            </div>
-          </div>
-          <div class="why-item">
-            <div class="why-icon">🎯</div>
-            <div class="why-text">
-              <h4>Full-stack robotica</h4>
-              <p>Van hardware tot mobiele app — ik begrijp het hele systeem en communiceer helder over elke laag.</p>
-            </div>
-          </div>
-          <div class="why-item">
-            <div class="why-icon">🔒</div>
-            <div class="why-text">
-              <h4>KvK geregistreerd</h4>
-              <p>Professioneel werkend als ZZP'er, met correcte facturatie en juridisch waterdichte overeenkomsten.</p>
-            </div>
-          </div>
-          <div class="why-item">
-            <div class="why-icon">🌍</div>
-            <div class="why-text">
-              <h4>Meertalig</h4>
-              <p>Werk in het Nederlands, Engels en Roemeens — ideaal voor internationale projecten en teams.</p>
-            </div>
-          </div>
-        </div>
-      </div>
+<!-- PROBLEMEN -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Veelvoorkomende problemen</div>
+    <h2>Herkenbaar in uw productie?</h2>
+    <p class="sec-desc">Dit zijn typische signalen dat een robotcel technisch draait, maar nog niet optimaal presteert.</p>
+
+    <div class="card">
+      <ul class="prob-list">
+        <li>Robotcel stopt onverwacht of moet regelmatig gereset worden</li>
+        <li>Lassen zijn instabiel of gevoelig voor kleine variaties in de productie</li>
+        <li>Cyclustijd is te hoog en beperkt output</li>
+      </ul>
+    </div>
+    <div class="card">
+      <ul class="prob-list">
+        <li>Programma is moeilijk te volgen of lastig aan te passen</li>
+        <li>Nieuwe producten kosten te veel programmeertijd</li>
+        <li>Twee robots of meerdere stappen lopen niet efficiënt samen</li>
+      </ul>
     </div>
   </div>
 </section>
 
-<!-- WERKWIJZE -->
-<section id="werkwijze">
-  <div class="container">
-    <div class="section-label">Hoe werk ik</div>
-    <h2>Werkwijze</h2>
-    <p class="section-desc">Transparant, iteratief en resultaatgericht — zo pak ik elk project aan.</p>
-    <div class="process-steps">
-      <div class="step fade-in">
-        <div class="step-num">01</div>
-        <h3>Intake gesprek</h3>
-        <p>Gratis kennismaking van 30 min om de scope, doelen en tijdlijn te bepalen.</p>
+<!-- RESULTATEN -->
+<section class="alt">
+  <div class="wrap">
+    <div class="eyebrow">Resultaten</div>
+    <h2>Bewezen resultaat uit productie</h2>
+    <p class="sec-desc">Geen marketingtaal. Gewoon een concreet voorbeeld van wat optimalisatie in de praktijk opleverde.</p>
+
+    <div class="card">
+      <div class="card-eyebrow">Case Study — Trumpf TrueLaser 5000</div>
+      <div class="case-title">
+        Cyclustijd gereduceerd van <span class="old">5,2 min</span> naar <span class="groen">4,1 min</span> per onderdeel
       </div>
-      <div class="step fade-in">
-        <div class="step-num">02</div>
-        <h3>Voorstel</h3>
-        <p>Gedetailleerde offerte met aanpak, deliverables, planning en uurtarief of vaste prijs.</p>
-      </div>
-      <div class="step fade-in">
-        <div class="step-num">03</div>
-        <h3>Ontwikkeling</h3>
-        <p>Iteratieve sprints met wekelijkse updates. Code in Git, open communicatie via Slack of Teams.</p>
-      </div>
-      <div class="step fade-in">
-        <div class="step-num">04</div>
-        <h3>Oplevering</h3>
-        <p>Volledige documentatie, overdracht en optionele support na afloop van het project.</p>
-      </div>
+      <p>Bereikt door onnodige luchtbewegingen te verwijderen, de homepositie dichter bij het armatuur te brengen, de lassnelheid op veilige trajecten te verhogen en parameters gericht af te stellen.</p>
+      <div class="case-note"><strong>Belangrijk:</strong> eerst productie stabiel krijgen, daarna snelheid verhogen. Niet andersom.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-eyebrow">Probleem</div>
+      <p>Hoge cyclustijd door inefficiënte bewegingen en niet-optimale overgangen.</p>
+    </div>
+    <div class="card">
+      <div class="card-eyebrow">Aanpak</div>
+      <p>Verspilling identificeren, padstrategie verbeteren en parameters veilig afstemmen op de praktijk.</p>
+    </div>
+    <div class="card">
+      <div class="card-eyebrow">Resultaat</div>
+      <p><strong class="groen">~21% cyclustijdreductie</strong> (5,2 → 4,1 min per onderdeel).</p>
     </div>
   </div>
 </section>
 
-<!-- TARIEVEN -->
-<section id="tarieven">
-  <div class="container">
-    <div class="section-label">Investering</div>
-    <h2>Tarieven</h2>
-    <p class="section-desc">Eerlijke, transparante prijzen zonder verborgen kosten. Alle tarieven zijn excl. 21% BTW.</p>
-    <div class="pricing-grid">
-      <div class="pricing-card fade-in">
-        <div class="pricing-type">Uurtarief</div>
-        <div class="pricing-rate">€75–95/u</div>
-        <div class="pricing-note">excl. BTW · marktconform voor seniorprofiel</div>
-        <ul class="pricing-features">
-          <li>Flexibel inzetbaar</li>
-          <li>Korte opdrachten mogelijk</li>
-          <li>Wekelijkse facturatie</li>
-          <li>Geen minimale afname</li>
-        </ul>
-      </div>
-      <div class="pricing-card featured fade-in">
-        <div class="pricing-type">Projectprijs</div>
-        <div class="pricing-rate">Op maat</div>
-        <div class="pricing-note">vaste prijs per deliverable</div>
-        <ul class="pricing-features">
-          <li>Helder budget van tevoren</li>
-          <li>Inclusief documentatie</li>
-          <li>Gedefinieerde milestones</li>
-          <li>Geen onverwachte meerkosten</li>
-        </ul>
-      </div>
-      <div class="pricing-card fade-in">
-        <div class="pricing-type">Retainer</div>
-        <div class="pricing-rate">€2.500/mnd</div>
-        <div class="pricing-note">excl. BTW · 32 uur/maand</div>
-        <ul class="pricing-features">
-          <li>Vaste beschikbaarheid</li>
-          <li>Prioriteit bij urgente taken</li>
-          <li>Maandelijkse rapportage</li>
-          <li>Ideaal voor lange termijn</li>
-        </ul>
+<!-- PLANNING & TARIEVEN -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Beschikbaarheid</div>
+    <h2>Planning &amp; inzetgebied</h2>
+
+    <div class="card">
+      <div class="avail-tag" style="margin-bottom:0.75rem;">Beschikbaar vanaf 1 mei 2026</div>
+      <p style="margin-bottom:1rem;">On-site in Nederland. Geschikt voor korte interventies, productiestabilisatie, tijdelijke ondersteuning of langere optimalisatietrajecten.</p>
+      <div class="details-list">
+        <span><strong>Locatie:</strong> Wageningen / Gelderland</span>
+        <span><strong>Scope:</strong> Laserlassen, MIG/MAG, cobot (licht)</span>
+        <span><strong>Primaire systemen:</strong> Cloos, Kuka</span>
+        <span><strong>Ook:</strong> ABB, FANUC, Trumpf TrueLaser 5000</span>
+        <span><strong>Facturering:</strong> Wekelijks of tweewekelijks</span>
       </div>
     </div>
+
+    <div class="eyebrow" style="margin-top:2.5rem; margin-bottom:0.5rem;">Tarieven</div>
+    <div class="card">
+      <div class="tarief-row">
+        <span class="tn">Korte interventie (1–5 dagen)</span>
+        <span class="tv">Op aanvraag</span>
+      </div>
+      <div class="tarief-row">
+        <span class="tn">Langdurig traject (weken/maanden)</span>
+        <span class="tv">Op aanvraag</span>
+      </div>
+      <div class="tarief-row">
+        <span class="tn">BTW</span>
+        <span class="tv">21% (excl.)</span>
+      </div>
+    </div>
+    <p style="font-size:0.8rem;color:var(--muted);">Reiskosten op basis van werkelijke afstand vanaf Wageningen.</p>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact">
-  <div class="container">
-    <div class="contact-card">
-      <div class="availability">Beschikbaar voor nieuwe opdrachten</div>
-      <h2>Laten we samenwerken</h2>
-      <p class="section-desc" style="margin: 0.75rem auto 0; text-align: center;">
-        Heb je een robotica- of software-project? Neem vrijblijvend contact op voor een kennismakingsgesprek.
-      </p>
-      <div class="contact-methods">
-        <a href="mailto:info@sasrobotics.nl" class="contact-link">
-          <span>✉️</span> info@sasrobotics.nl
-        </a>
-        <a href="https://linkedin.com/in/sasrobotics" class="contact-link" target="_blank" rel="noopener">
-          <span>💼</span> LinkedIn
-        </a>
-        <a href="https://github.com/aljazirrr" class="contact-link" target="_blank" rel="noopener">
-          <span>🐙</span> GitHub
-        </a>
-      </div>
+<section class="alt" id="contact">
+  <div class="wrap">
+    <div class="eyebrow">Contact</div>
+    <h2>Neem contact op</h2>
+    <p class="sec-desc">Bel direct of stuur een bericht. Bij technische spoed is een korte omschrijving van het probleem genoeg.</p>
+
+    <div class="contact-list-wrap">
+      <a href="tel:+31687752177" class="c-item">
+        <div class="c-icon">📞</div>
+        <div class="c-meta">
+          <span class="c-lbl">Telefoon</span>
+          <span class="c-val">06 8775 2177</span>
+        </div>
+      </a>
+      <a href="mailto:info@sasrobotics.nl" class="c-item">
+        <div class="c-icon">✉️</div>
+        <div class="c-meta">
+          <span class="c-lbl">E-mail</span>
+          <span class="c-val">info@sasrobotics.nl</span>
+        </div>
+      </a>
+      <a href="https://linkedin.com/in/sasrobotics" target="_blank" rel="noopener" class="c-item">
+        <div class="c-icon">💼</div>
+        <div class="c-meta">
+          <span class="c-lbl">LinkedIn</span>
+          <span class="c-val">LinkedIn profiel</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="template-box">
+      <div class="t-lbl">Snelle berichtsjabloon</div>
+      <pre>Hallo, wij hebben on-site robotlassen
+ondersteuning nodig.
+
+Merk/systeem: <span class="ph">[bijv. Cloos / Kuka]</span>
+Probleem: <span class="ph">[omschrijf kort]</span>
+Gewenste start: <span class="ph">[datum]</span>
+
+Kunt u beschikbaarheid bevestigen?</pre>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
-  <p>
-    &copy; 2025 SAS Robotics &nbsp;·&nbsp;
-    KvK-nummer: <em>te registreren</em> &nbsp;·&nbsp;
-    BTW-nummer: <em>te registreren</em> &nbsp;·&nbsp;
-    <a href="mailto:info@sasrobotics.nl">info@sasrobotics.nl</a>
-  </p>
+  <p>© SAS Las en Robottechniek — Wageningen, Nederland</p>
+  <p>KVK: 91035066 &nbsp;·&nbsp; BTW: NL004860328B47 &nbsp;·&nbsp; <a href="/privacyverklaring">Privacyverklaring</a></p>
 </footer>
-
-<script>
-  // Scroll fade-in animation
-  const observer = new IntersectionObserver(
-    (entries) => entries.forEach(e => e.isIntersecting && e.target.classList.add('visible')),
-    { threshold: 0.1 }
-  );
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-  // Smooth nav highlight
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 80) current = s.id; });
-    navLinks.forEach(a => {
-      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--accent)' : '';
-    });
-  });
-</script>
 
 </body>
 </html>
