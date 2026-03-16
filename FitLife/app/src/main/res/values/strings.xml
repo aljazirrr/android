@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FitLife</string>
+    <string name="app_tagline">Transformă-ți viața, un antrenament pe zi</string>
+
+    <!-- Auth -->
+    <string name="login_title">Bun venit înapoi!</string>
+    <string name="register_title">Creează cont</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Parolă</string>
+    <string name="login_button">Autentificare</string>
+    <string name="register_button">Înregistrare</string>
+    <string name="forgot_password">Ai uitat parola?</string>
+    <string name="no_account">Nu ai cont? Înregistrează-te</string>
+    <string name="have_account">Ai deja cont? Autentifică-te</string>
+    <string name="sign_in_google">Continuă cu Google</string>
+    <string name="password_reset_sent">Email de resetare trimis!</string>
+
+    <!-- Dashboard -->
+    <string name="good_morning">Bună dimineața</string>
+    <string name="good_afternoon">Bună ziua</string>
+    <string name="good_evening">Bună seara</string>
+    <string name="steps">Pași</string>
+    <string name="calories_burned">Calorii arse</string>
+    <string name="workouts">Antrenamente</string>
+    <string name="streak_days">zile</string>
+    <string name="start_workout">Gata de antrenament?</string>
+    <string name="weekly_progress">Progres săptămânal</string>
+    <string name="recent_workouts">Antrenamente recente</string>
+
+    <!-- Workout -->
+    <string name="active_workout">Antrenament activ</string>
+    <string name="finish_workout">Termină antrenamentul</string>
+    <string name="rest_time">Timp de odihnă</string>
+    <string name="add_exercise">Adaugă exercițiu</string>
+    <string name="sets">Seturi</string>
+    <string name="reps">Repetări</string>
+    <string name="weight_kg">Greutate (kg)</string>
+
+    <!-- Nutrition -->
+    <string name="breakfast">Mic dejun</string>
+    <string name="lunch">Prânz</string>
+    <string name="dinner">Cină</string>
+    <string name="snack">Gustare</string>
+    <string name="calories">Calorii</string>
+    <string name="protein">Proteine</string>
+    <string name="carbs">Carbohidrați</string>
+    <string name="fat">Grăsimi</string>
+    <string name="water">Apă</string>
+    <string name="add_food">Adaugă aliment</string>
+
+    <!-- Progress -->
+    <string name="body_measurements">Măsurători corporale</string>
+    <string name="progress_photos">Fotografii progres</string>
+    <string name="personal_records">Recorduri personale</string>
+    <string name="weight">Greutate</string>
+    <string name="bmi">IMC</string>
+    <string name="body_fat">Procent grăsime</string>
+
+    <!-- Profile -->
+    <string name="profile">Profil</string>
+    <string name="edit_profile">Editează profil</string>
+    <string name="settings">Setări</string>
+    <string name="sign_out">Deconectare</string>
+    <string name="height">Înălțime</string>
+    <string name="age">Vârstă</string>
+
+    <!-- Errors -->
+    <string name="error_network">Eroare de rețea. Verifică conexiunea.</string>
+    <string name="error_unknown">A apărut o eroare. Încearcă din nou.</string>
+    <string name="error_email_invalid">Emailul este invalid.</string>
+    <string name="error_password_weak">Parola trebuie să aibă minim 8 caractere.</string>
+</resources>
