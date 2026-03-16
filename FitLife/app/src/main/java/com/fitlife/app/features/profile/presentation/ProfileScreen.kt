@@ -32,6 +32,10 @@ import com.fitlife.app.core.utils.toDateString
 fun ProfileScreen(
     onEditProfile: () -> Unit,
     onNavigateToSettings: () -> Unit,
+    onNavigateToNotifications: () -> Unit,
+    onNavigateToSecurity: () -> Unit,
+    onNavigateToHelp: () -> Unit,
+    onNavigateToAbout: () -> Unit,
     onSignOut: () -> Unit,
     viewModel: ProfileViewModel = hiltViewModel()
 ) {
@@ -68,13 +72,13 @@ fun ProfileScreen(
                 HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
                 ProfileMenuItem(Icons.Default.Settings, "Setări", onClick = onNavigateToSettings)
                 HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
-                ProfileMenuItem(Icons.Default.Notifications, "Notificări", onClick = {})
+                ProfileMenuItem(Icons.Default.Notifications, "Notificări", onClick = onNavigateToNotifications)
                 HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
-                ProfileMenuItem(Icons.Default.Security, "Securitate", onClick = {})
+                ProfileMenuItem(Icons.Default.Security, "Securitate", onClick = onNavigateToSecurity)
                 HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
-                ProfileMenuItem(Icons.Default.Help, "Ajutor & Suport", onClick = {})
+                ProfileMenuItem(Icons.Default.Help, "Ajutor & Suport", onClick = onNavigateToHelp)
                 HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
-                ProfileMenuItem(Icons.Default.Info, "Despre FitLife", onClick = {})
+                ProfileMenuItem(Icons.Default.Info, "Despre FitLife", onClick = onNavigateToAbout)
             }
         }
 

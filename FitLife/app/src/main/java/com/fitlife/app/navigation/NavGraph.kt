@@ -17,6 +17,10 @@ import com.fitlife.app.core.utils.MealType
 import com.fitlife.app.features.profile.presentation.ProfileScreen
 import com.fitlife.app.features.profile.presentation.EditProfileScreen
 import com.fitlife.app.features.profile.presentation.SettingsScreen
+import com.fitlife.app.features.profile.presentation.NotificationsScreen
+import com.fitlife.app.features.profile.presentation.SecurityScreen
+import com.fitlife.app.features.profile.presentation.HelpScreen
+import com.fitlife.app.features.profile.presentation.AboutScreen
 import com.fitlife.app.features.progress.presentation.AddMeasurementScreen
 import com.fitlife.app.features.progress.presentation.ProgressScreen
 import com.fitlife.app.features.workout.presentation.active.ActiveWorkoutScreen
@@ -39,6 +43,10 @@ sealed class Screen(val route: String) {
     object AddMeasurement : Screen("add_measurement")
     object EditProfile : Screen("edit_profile")
     object Settings : Screen("settings")
+    object Notifications : Screen("notifications")
+    object Security : Screen("security")
+    object Help : Screen("help")
+    object About : Screen("about")
     object AddFood : Screen("add_food/{mealType}") {
         fun createRoute(mealType: MealType) = "add_food/${mealType.name}"
     }
@@ -165,6 +173,10 @@ fun FitLifeNavGraph(
             ProfileScreen(
                 onEditProfile = { navController.navigate(Screen.EditProfile.route) },
                 onNavigateToSettings = { navController.navigate(Screen.Settings.route) },
+                onNavigateToNotifications = { navController.navigate(Screen.Notifications.route) },
+                onNavigateToSecurity = { navController.navigate(Screen.Security.route) },
+                onNavigateToHelp = { navController.navigate(Screen.Help.route) },
+                onNavigateToAbout = { navController.navigate(Screen.About.route) },
                 onSignOut = {
                     navController.navigate(Screen.Login.route) {
                         popUpTo(0) { inclusive = true }
@@ -179,6 +191,22 @@ fun FitLifeNavGraph(
 
         composable(Screen.Settings.route) {
             SettingsScreen(onNavigateBack = { navController.popBackStack() })
+        }
+
+        composable(Screen.Notifications.route) {
+            NotificationsScreen(onNavigateBack = { navController.popBackStack() })
+        }
+
+        composable(Screen.Security.route) {
+            SecurityScreen(onNavigateBack = { navController.popBackStack() })
+        }
+
+        composable(Screen.Help.route) {
+            HelpScreen(onNavigateBack = { navController.popBackStack() })
+        }
+
+        composable(Screen.About.route) {
+            AboutScreen(onNavigateBack = { navController.popBackStack() })
         }
     }
 }
