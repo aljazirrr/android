@@ -87,12 +87,19 @@
 
     .logo-icon {
       width: 36px; height: 36px;
-      border: 2px solid var(--border);
       border-radius: 8px;
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .logo-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
     }
 
     .nav-cta {
@@ -555,7 +562,7 @@
 
     footer a { color: var(--muted); text-decoration: underline; }
 
-    /* ── RESPONSIVE ── */
+    /* ── RESPONSIVE: tablet ── */
     @media (min-width: 600px) {
       .hero-actions {
         flex-direction: row;
@@ -564,6 +571,84 @@
       .btn-primary, .btn-phone {
         flex: 1;
       }
+
+      .info-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+      }
+    }
+
+    /* ── RESPONSIVE: desktop ── */
+    @media (min-width: 900px) {
+      nav {
+        padding: 0.9rem 3rem;
+      }
+
+      .logo { font-size: 1rem; }
+      .logo-icon { width: 42px; height: 42px; }
+
+      .hero {
+        max-width: 820px;
+        padding: 5rem 2rem 4rem;
+      }
+
+      h1 {
+        font-size: 3.2rem;
+      }
+
+      .hero-sub {
+        font-size: 1.1rem;
+      }
+
+      .info-grid {
+        max-width: 820px;
+        padding: 0 2rem;
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .section {
+        max-width: 820px;
+        padding: 4rem 2rem;
+      }
+
+      .dienst-cards-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.75rem;
+      }
+
+      .dienst-cards-grid .dienst-card {
+        margin-bottom: 0;
+      }
+
+      .case-details-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+      }
+
+      .case-details-grid .case-detail {
+        margin-bottom: 0;
+      }
+
+      .contact-and-template {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+        align-items: start;
+      }
+
+      .contact-and-template .contact-list,
+      .contact-and-template .template-card {
+        margin-bottom: 0;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .hero { max-width: 960px; }
+      .info-grid { max-width: 960px; }
+      .section { max-width: 960px; }
     }
 
     /* ── RESPONSE SLA BADGE ── */
@@ -608,7 +693,7 @@
 <!-- NAV -->
 <nav>
   <a href="/" class="logo">
-    <div class="logo-icon">🤖</div>
+    <div class="logo-icon"><img src="logo.png" alt="SAS Las en Robottechniek logo" /></div>
     <span>SAS Las en Robottechniek</span>
   </a>
   <a href="#contact" class="nav-cta">Beschikbaarheid checken</a>
@@ -647,6 +732,10 @@
     <span class="chip">MIG-MAG</span>
     <span class="chip">Laser</span>
   </div>
+  <div class="systemen-row" style="margin-top:0.35rem;">
+    <span class="sys-label">Certificaten:</span>
+    <span class="chip" style="border-color:#7c3aed;color:#7c3aed;font-weight:700;">TIG Lassen — Cert. Niveau 2</span>
+  </div>
 </div>
 
 <!-- INFO CARDS -->
@@ -671,6 +760,11 @@
     <div class="info-card-label">Werkwijze</div>
     <p>Praktisch, direct op de cel, met focus op productie, stabiliteit en duidelijke programmastructuur.</p>
   </div>
+
+  <div class="info-card">
+    <div class="info-card-label">Certificaten &amp; Skills</div>
+    <p><strong>TIG Lassen — Niveau 2</strong><br />Gecertificeerd handmatig TIG lassen, aanvullend op robotprogrammering voor projecten waarbij handmatige laskwaliteit vereist is.</p>
+  </div>
 </div>
 
 <!-- DIENSTEN -->
@@ -680,22 +774,24 @@
     <h2>Wat ik voor u doe</h2>
     <p class="section-desc">Van acute storingen en instabiel lasgedrag tot structurele cyclustijdverbetering en on-cell programmering.</p>
 
-    <div class="dienst-card">
-      <div class="dienst-icon">🔍</div>
-      <h3>Debugging &amp; Troubleshooting</h3>
-      <p>Onstabiel lassen, stops, botsingen, foutieve logica of onverwacht robotgedrag direct op de cel analyseren en oplossen — met prioriteit voor Cloos en Kuka systemen.</p>
-    </div>
+    <div class="dienst-cards-grid">
+      <div class="dienst-card">
+        <div class="dienst-icon">🔍</div>
+        <h3>Debugging &amp; Troubleshooting</h3>
+        <p>Onstabiel lassen, stops, botsingen, foutieve logica of onverwacht robotgedrag direct op de cel analyseren en oplossen — met prioriteit voor Cloos en Kuka systemen.</p>
+      </div>
 
-    <div class="dienst-card">
-      <div class="dienst-icon">📉</div>
-      <h3>Cyclustijd Optimalisatie</h3>
-      <p>Onnodige luchtbewegingen, wachttijden en inefficiënte overgangen terugbrengen zonder kwaliteit of stabiliteit te schaden.</p>
-    </div>
+      <div class="dienst-card">
+        <div class="dienst-icon">📉</div>
+        <h3>Cyclustijd Optimalisatie</h3>
+        <p>Onnodige luchtbewegingen, wachttijden en inefficiënte overgangen terugbrengen zonder kwaliteit of stabiliteit te schaden.</p>
+      </div>
 
-    <div class="dienst-card">
-      <div class="dienst-icon">&lt;/&gt;</div>
-      <h3>On-Cell Programmering</h3>
-      <p>Vanaf nul programmeren, bestaande routines verbeteren en programma's opbouwen die in productie logisch en onderhoudbaar blijven.</p>
+      <div class="dienst-card">
+        <div class="dienst-icon">&lt;/&gt;</div>
+        <h3>On-Cell Programmering</h3>
+        <p>Vanaf nul programmeren, bestaande routines verbeteren en programma's opbouwen die in productie logisch en onderhoudbaar blijven.</p>
+      </div>
     </div>
   </div>
 </div>
@@ -737,19 +833,21 @@
       <div class="note"><strong>Belangrijk:</strong> eerst productie stabiel krijgen, daarna snelheid verhogen. Niet andersom.</div>
     </div>
 
-    <div class="case-detail">
-      <div class="label">Probleem</div>
-      <p>Hoge cyclustijd door inefficiënte bewegingen en niet-optimale overgangen.</p>
-    </div>
+    <div class="case-details-grid">
+      <div class="case-detail">
+        <div class="label">Probleem</div>
+        <p>Hoge cyclustijd door inefficiënte bewegingen en niet-optimale overgangen.</p>
+      </div>
 
-    <div class="case-detail">
-      <div class="label">Aanpak</div>
-      <p>Verspilling identificeren, padstrategie verbeteren en parameters veilig afstemmen op de praktijk.</p>
-    </div>
+      <div class="case-detail">
+        <div class="label">Aanpak</div>
+        <p>Verspilling identificeren, padstrategie verbeteren en parameters veilig afstemmen op de praktijk.</p>
+      </div>
 
-    <div class="case-detail">
-      <div class="label">Resultaat</div>
-      <p><span class="result">~21% cyclustijdreductie</span> (5,2 → 4,1 min per onderdeel).</p>
+      <div class="case-detail">
+        <div class="label">Resultaat</div>
+        <p><span class="result">~21% cyclustijdreductie</span> (5,2 → 4,1 min per onderdeel).</p>
+      </div>
     </div>
   </div>
 </div>
@@ -799,6 +897,7 @@
     <h2>Neem contact op</h2>
     <p class="section-desc">Bel direct of stuur een bericht. Bij technische spoed is een korte omschrijving van het probleem genoeg.</p>
 
+    <div class="contact-and-template">
     <div class="contact-list">
       <a href="tel:+31687752177" class="contact-item">
         <div class="contact-icon">📞</div>
@@ -841,13 +940,14 @@ Gewenste start: <span class="placeholder">[datum]</span>
 
 Kunt u beschikbaarheid bevestigen?</pre>
     </div>
+    </div><!-- end contact-and-template -->
   </div>
 </div>
 
 <!-- FOOTER -->
 <footer>
   <p>© SAS Las en Robottechniek — Wageningen, Nederland</p>
-  <p>KVK: 91035066 &nbsp;·&nbsp; BTW: NL004860328B47 &nbsp;·&nbsp; <a href="/privacyverklaring">Privacyverklaring</a></p>
+  <p>KVK: 91035066 &nbsp;·&nbsp; BTW: NL004860328B47 &nbsp;·&nbsp; <a href="privacyverklaring.html">Privacyverklaring</a></p>
 </footer>
 
 </body>
