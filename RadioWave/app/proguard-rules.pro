@@ -1,0 +1,6 @@
+-keep class com.radiowave.app.core.data.remote.dto.** { *; }
+-keep class com.radiowave.app.core.domain.model.** { *; }
+-keepattributes Signature
+-keepattributes *Annotation*
+-dontwarn okhttp3.**
+-dontwarn retrofit2.**
