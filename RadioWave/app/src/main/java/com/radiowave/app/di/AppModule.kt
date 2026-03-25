@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
+import androidx.media3.common.C
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.room.Room
 import com.google.firebase.auth.FirebaseAuth
@@ -92,5 +93,8 @@ object AppModule {
     @Provides
     @Singleton
     fun provideExoPlayer(@ApplicationContext context: Context): ExoPlayer =
-        ExoPlayer.Builder(context).build()
+        ExoPlayer.Builder(context)
+            .setWakeMode(C.WAKE_MODE_NETWORK)
+            .setHandleAudioBecomingNoisy(true)
+            .build()
 }
