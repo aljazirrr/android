@@ -13,7 +13,6 @@ import com.fitlife.app.features.exercises.presentation.ExerciseListScreen
 import com.fitlife.app.features.exercises.presentation.ExerciseDetailScreen
 import com.fitlife.app.features.nutrition.presentation.AddFoodScreen
 import com.fitlife.app.features.nutrition.presentation.NutritionScreen
-import com.fitlife.app.features.nutrition.presentation.WeeklySummaryScreen
 import com.fitlife.app.core.utils.MealType
 import com.fitlife.app.features.profile.presentation.ProfileScreen
 import com.fitlife.app.features.profile.presentation.EditProfileScreen
@@ -43,7 +42,6 @@ sealed class Screen(val route: String) {
     object AddFood : Screen("add_food/{mealType}") {
         fun createRoute(mealType: MealType) = "add_food/${mealType.name}"
     }
-    object WeeklySummary : Screen("weekly_summary")
     object ExerciseDetail : Screen("exercise_detail/{exerciseId}") {
         fun createRoute(exerciseId: String) = "exercise_detail/$exerciseId"
     }
@@ -133,16 +131,7 @@ fun FitLifeNavGraph(
             NutritionScreen(
                 onAddFood = { mealType ->
                     navController.navigate(Screen.AddFood.createRoute(mealType))
-                },
-                onNavigateToWeeklySummary = {
-                    navController.navigate(Screen.WeeklySummary.route)
                 }
-            )
-        }
-
-        composable(Screen.WeeklySummary.route) {
-            WeeklySummaryScreen(
-                onNavigateBack = { navController.popBackStack() }
             )
         }
 

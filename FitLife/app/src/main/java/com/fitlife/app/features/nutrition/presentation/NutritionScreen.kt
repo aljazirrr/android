@@ -30,7 +30,6 @@ import com.fitlife.app.core.utils.toDateString
 @Composable
 fun NutritionScreen(
     onAddFood: (MealType) -> Unit,
-    onNavigateToWeeklySummary: () -> Unit = {},
     viewModel: NutritionViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
@@ -38,14 +37,7 @@ fun NutritionScreen(
 
     Column(modifier = Modifier.fillMaxSize()) {
         // ─── Top Bar ──────────────────────────────────────────────────────────
-        TopAppBar(
-            title = { Text("Nutriție", fontWeight = FontWeight.Bold) },
-            actions = {
-                IconButton(onClick = onNavigateToWeeklySummary) {
-                    Icon(Icons.Default.BarChart, contentDescription = "Rezumat săptămânal")
-                }
-            }
-        )
+        TopAppBar(title = { Text("Nutriție", fontWeight = FontWeight.Bold) })
 
         LazyColumn(
             contentPadding = PaddingValues(bottom = 80.dp),
