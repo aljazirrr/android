@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Asistent Bariatric</string>
+
+    <!-- Onboarding -->
+    <string name="welcome_title">Bun venit!</string>
+    <string name="welcome_subtitle">Sunt asistentul tău dietetician specializat în chirurgie bariatrică.</string>
+    <string name="your_name">Cum te numești?</string>
+    <string name="name_placeholder">Numele tău</string>
+    <string name="surgery_type_title">Ce tip de intervenție ai avut?</string>
+    <string name="surgery_type_subtitle">Acest lucru ne ajută să personalizăm recomandările nutriționale.</string>
+    <string name="post_op_stage_title">În ce stadiu te afli?</string>
+    <string name="post_op_stage_subtitle">Fiecare stadiu post-operator are nevoi nutriționale diferite.</string>
+    <string name="continue_btn">Continuă</string>
+    <string name="start_btn">Începe</string>
+    <string name="back">Înapoi</string>
+
+    <!-- Chat -->
+    <string name="chat_title">Asistent Dietetician</string>
+    <string name="chat_subtitle">Chirurgie Bariatrică</string>
+    <string name="send_message">Trimite</string>
+    <string name="message_placeholder">Scrie un mesaj…</string>
+    <string name="new_conversation">Conversație nouă</string>
+    <string name="loading">Se încarcă…</string>
+
+    <!-- Hydration -->
+    <string name="hydration_title">Hidratare</string>
+    <string name="add_water">Adaugă apă</string>
+    <string name="goal_reached">Felicitări! Ai atins obiectivul!</string>
+    <string name="today">Astăzi</string>
+    <string name="last_7_days">Ultimele 7 zile</string>
+
+    <!-- Food Journal -->
+    <string name="journal_title">Jurnal Alimentar</string>
+    <string name="add_food">Adaugă aliment</string>
+    <string name="food_name">Ce ai mâncat?</string>
+    <string name="meal_type">Tipul mesei</string>
+    <string name="portion">Porție</string>
+    <string name="notes">Note (opțional)</string>
+    <string name="add">Adaugă</string>
+    <string name="cancel">Anulează</string>
+    <string name="delete">Șterge</string>
+    <string name="no_entries_today">Nicio masă înregistrată astăzi</string>
+    <string name="breakfast">Mic Dejun</string>
+    <string name="lunch">Prânz</string>
+    <string name="dinner">Cină</string>
+    <string name="snack">Gustare</string>
+
+    <!-- Tips -->
+    <string name="tips_title">Sfaturi Zilnice</string>
+    <string name="tip_of_day">Sfatul zilei</string>
+    <string name="categories">Categorii</string>
+    <string name="all">Toate</string>
+    <string name="another_tip">Alt sfat</string>
+
+    <!-- Bottom Navigation -->
+    <string name="nav_chat">Chat</string>
+    <string name="nav_hydration">Hidratare</string>
+    <string name="nav_journal">Jurnal</string>
+    <string name="nav_tips">Sfaturi</string>
+
+    <!-- Medical disclaimer -->
+    <string name="medical_disclaimer">Această aplicație oferă suport nutrițional informativ și nu înlocuiește sfatul medicului dumneavoastră. Consultați întotdeauna medicul bariatic pentru decizii medicale.</string>
+</resources>
