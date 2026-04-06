@@ -105,8 +105,8 @@ dependencies {
     // DataStore
     implementation(libs.androidx.datastore.preferences)
 
-    // Gemini AI
-    implementation(libs.generativeai)
+    // OkHttp (Gemini REST API)
+    implementation(libs.okhttp)
 
     // Serialization
     implementation(libs.kotlinx.serialization.json)
